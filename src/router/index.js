@@ -8,6 +8,8 @@ import Address from '../views/address/Address.vue'
 import AddressAdd from '../views/address/AddressAdd.vue'
 import AddressEdit from '../views/address/AddressEdit.vue'
 import productDetail from '../views/Detail/Detail.vue'
+import server from '../views/SystemSet/server.vue'
+import quesInfo from '../views/SystemSet/quesInfo.vue'
 Vue.use(VueRouter)
 
 const routes = [{
@@ -53,6 +55,16 @@ const routes = [{
 		path: '/productDetail',
 		name: 'productDetail',
 		component: productDetail
+	},
+	{
+		path: '/server',
+		name: 'server',
+		component: server
+	},
+	{
+		path: '/quesInfo',
+		name: 'quesInfo',
+		component: quesInfo
 	}
 ]
 
