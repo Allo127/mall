@@ -1,8 +1,9 @@
 <template>
   <div class='swiper-wrapper'>
     <van-swipe :autoplay="3000">
-      <van-swipe-item v-for="(image, index) in bannerImages" :key="index">
-        <img v-lazy="image.carousel_url" />
+     <van-swipe-item v-for="(image, index) in bannerImages" :key="index">
+       <img v-lazy="image" />
+        <!-- <img v-lazy="image.carousel_url" /> -->
       </van-swipe-item>
     </van-swipe>
   </div>
@@ -17,12 +18,6 @@
     data() {
       return {
         //images: []
-        // images: [
-        //   'http://192.168.5.6:8088/static/img/banner1.jpg',
-        //   'http://192.168.5.6:8088/static/img/banner2.jpg',
-        //   'http://192.168.5.6:8088/static/img/banner3.jpg',
-        //   'http://192.168.5.6:8088/static/img/banner4.jpg'
-        // ]
       }
     },
     methods: {
@@ -42,7 +37,7 @@
       ...mapState(['bannerImages'])
     },
     mounted() {
-      this.getBannerImage()
+      // this.getBannerImage()
     }
   }
 </script>

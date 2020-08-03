@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+// 封装axios
 axios.defaults.baseURL = 'http://192.168.5.6:8088/'
 
 /*
