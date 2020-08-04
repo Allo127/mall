@@ -14,10 +14,16 @@ import proList from '../views/proList/index.vue'
 import aboutUs from '../views/SystemSet/aboutUs.vue'
 import version from '../views/SystemSet/version.vue'
 import advice from '../views/SystemSet/pushAdvice.vue'
+import searchbar from '../components/SearchBar.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
 		redirect: '/Home'
+	},
+	{
+		path: '/Search',
+		name: 'Search',
+		component: searchbar
 	},
 	{
 		path: '/Home',
