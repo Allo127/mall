@@ -10,8 +10,11 @@ import AddressEdit from '../views/address/AddressEdit.vue'
 import productDetail from '../views/Detail/Detail.vue'
 import server from '../views/SystemSet/server.vue'
 import quesInfo from '../views/SystemSet/quesInfo.vue'
+import proList from '../views/proList/index.vue'
+import aboutUs from '../views/SystemSet/aboutUs.vue'
+import version from '../views/SystemSet/version.vue'
+import advice from '../views/SystemSet/pushAdvice.vue'
 Vue.use(VueRouter)
-
 const routes = [{
 		path: '/',
 		redirect: '/Home'
@@ -65,6 +68,26 @@ const routes = [{
 		path: '/quesInfo',
 		name: 'quesInfo',
 		component: quesInfo
+	},
+	{
+		path: '/proList',
+		name: 'proList',
+		component: proList
+	},
+	{
+		path: '/aboutUs',
+		name: 'aboutUs',
+		component: aboutUs
+	},
+	{
+		path: '/version',
+		name: 'version',
+		component: version
+	},
+	{
+		path: '/advice',
+		name: 'advice',
+		component: advice
 	}
 ]
 

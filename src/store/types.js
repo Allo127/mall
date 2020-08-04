@@ -1,5 +1,7 @@
 //规定操作
 export const SET_BANNER_IMAGES = 'SET_BANNER_IMAGES' // 设置banner图片
+//===========分类部分数据==================
+export const CATAGOTY_DATA = 'CATAGOTY_DATA' //分类数据
 //=================地址部分开始==========================
 // 收货地址列表
 export const ADDRESS_LIST = "ADDRESS_LIST"

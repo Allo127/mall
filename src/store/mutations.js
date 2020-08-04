@@ -4,12 +4,17 @@ import {
 	ADDRESS_INFO,
 	EDIT_ADDRESS_INFO,
 	DELELETE_ADDRESS,
-	SAVE_CHANGE_DETAIL
+	SAVE_CHANGE_DETAIL,
+	CATAGOTY_DATA
 } from './types.js'
 export default {
 	[SET_BANNER_IMAGES](state, images) {
 		state.bannerImages = images
 		localStorage.setItem('bannerImages', JSON.stringify(images))
+	},
+	[CATAGOTY_DATA](state, data) {
+		state.catagoryData = data
+		localStorage.setItem('catagoryData', JSON.stringify(data))
 	},
 	// 收货地址列表
 	[ADDRESS_LIST](state, data) {

@@ -1,5 +1,7 @@
 export default {
 	bannerImages: JSON.parse(localStorage.getItem('bannerImages')) || [],
+	//分类数据
+	catagoryData: JSON.parse(localStorage.getItem('catagoryData')) || [],
 	//商品优惠卷列表显隐
 	isShowCoupon: false,
 	// 收货人地址列表
