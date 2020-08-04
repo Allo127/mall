@@ -15,6 +15,9 @@ import aboutUs from '../views/SystemSet/aboutUs.vue'
 import version from '../views/SystemSet/version.vue'
 import advice from '../views/SystemSet/pushAdvice.vue'
 import searchbar from '../components/SearchBar.vue'
+import topPro from '../views/proList/topWelPro.vue'
+import goodTopic from '../views/proList/goodTopic.vue'
+import Topic from '../views/proList/topic.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -94,6 +97,21 @@ const routes = [{
 		path: '/advice',
 		name: 'advice',
 		component: advice
+	},
+	{
+		path: '/topPro',
+		name: 'topPro',
+		component: topPro
+	},
+	{
+		path: '/goodTopic',
+		name: 'goodTopic',
+		component: goodTopic
+	},
+	{
+		path: '/Topic',
+		name: 'Topic',
+		component: Topic
 	}
 ]
 

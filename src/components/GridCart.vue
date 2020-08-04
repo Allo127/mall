@@ -4,9 +4,9 @@
 			<van-col>{{title}}</van-col>
 		</van-row>
 		<van-grid :column-num="column" class="border-r-5">
-			<van-grid-item v-for="(item,index) in Data" :key="index" :text="item.title">
+			<van-grid-item v-for="(item,index) in Data" :key="index" :text="item.category_name">
 				<div slot="icon">
-					<img class="icon-img" :src="item.iconUrl" alt="item.title">
+					<img class="icon-img" :src="item.carousel_small" :alt="item.category_name">
 				</div>
 			</van-grid-item>
 		</van-grid>

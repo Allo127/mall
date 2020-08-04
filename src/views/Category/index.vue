@@ -10,15 +10,30 @@
 			<van-col span="6">
 				<div ref="menu" class="menu-wrapper">
 					<van-sidebar v-model="activeKey" @change="change">
-						<van-sidebar-item :title="item.name" v-for="(item,index) in menu" :key="index" />
+						<van-sidebar-item :title="item.category_name" v-for="(item,index) in catagoryData" :key="index" />
 					</van-sidebar>
 				</div>
 			</van-col>
 			<!-- 分类内容 -->
 			<van-col span="18">
 				<div ref="content" class="content-wrapper">
-					<!-- 分类内容部分 -->
-					<category-content></category-content>
+					<div class="category-content">
+						<div class="catrgory-swipe">
+							<van-swipe :autoplay="3000" indicator-color="white">
+								<van-swipe-item>
+									<img class="swipe-img" :src="img1" />
+								</van-swipe-item>
+								<van-swipe-item>
+									<img class="swipe-img" :src="img2" />
+								</van-swipe-item>
+							</van-swipe>
+						</div>
+						<div class="content-item">
+							<GridCart :title="item.category_name" v-for="(item,index) in content" :key="index" :Data="item.children"></GridCart>
+						</div>
+					</div>
+					<!-- 分类内容部分
+					<category-content></category-content> -->
 				</div>
 			</van-col>
 		</van-row>
@@ -27,61 +42,29 @@
 </template>
 
 <script>
+	// import CategoryContent from "./base/CategoryContent"
 	import BScroll from "better-scroll"
 	import menubar from '../../components/MenuBar.vue'
-	import CategoryContent from "./base/CategoryContent"
-
+	import GridCart from "../../components/GridCart"
+	import {
+		mapState,
+		mapMutations
+	} from "vuex"
 	export default {
 		components: {
 			menubar,
-			CategoryContent
+			GridCart
+			// CategoryContent
 		},
 		data() {
 			return {
 				Searchvalue: "",
 				activeKey: 0,
 				contentActive: 0,
-				menu: [{
-						name: "推荐分类",
-						id: "1"
-					},
-					{
-						name: "进口超市",
-						id: "2"
-					},
-					{
-						name: "国际品牌",
-						id: "3"
-					},
-					{
-						name: "奢侈品",
-						id: "4"
-					},
-					{
-						name: "海囤全球",
-						id: "6"
-					},
-					{
-						name: "男装",
-						id: "7"
-					},
-					{
-						name: "女装",
-						id: "8"
-					},
-					{
-						name: "男鞋",
-						id: "9"
-					},
-					{
-						name: "女鞋",
-						id: "10"
-					},
-					{
-						name: "钟表珠宝",
-						id: "11"
-					}
-				]
+				menu: [],
+				content: [],
+				img1: "",
+				img2: ""
 			}
 		},
 		created() {
@@ -90,6 +73,21 @@
 			})
 		},
 		methods: {
+			...mapMutations(['CATAGOTY_DATA']),
+			async getCataList() {
+				this.$api.catagory.cataData().then(({
+					data
+				}) => {
+					console.log(data)
+					this.CATAGOTY_DATA(data)
+					this.content = this.catagoryData[this.contentActive].children
+					this.img1 = this.catagoryData[this.contentActive].carousel_1
+					this.img2 = this.catagoryData[this.contentActive].carousel_2
+					// this.content = data[this.contentActive].children
+					// this.img1 = data[this.contentActive].carousel_1
+					// this.img2 = data[this.contentActive].carousel_2
+				})
+			},
 			// 初始化better-scroll
 			initScroll() {
 				this.menuScroll = new BScroll(this.$refs.menu, {
@@ -108,11 +106,20 @@
 			},
 			change(index) {
 				this.contentActive = index
+				this.content = this.catagoryData[index].children
+				this.img1 = this.catagoryData[this.contentActive].carousel_1
+				this.img2 = this.catagoryData[this.contentActive].carousel_2
 			}
+		},
+		mounted() {
+			this.getCataList()
 		},
 		beforeDestroy() {
 			this.menuScroll.destroy()
 			this.contentScroll.destroy()
+		},
+		computed: {
+			...mapState(["catagoryData"])
 		}
 	}
 </script>
@@ -142,6 +149,18 @@
 			overflow: hidden;
 			left: 85px;
 			right: 0;
+		}
+
+		.category-content {
+			padding: 10px;
+
+			.catrgory-swipe {
+				overflow: hidden;
+
+				.swipe-img {
+					width: 100%;
+				}
+			}
 		}
 	}
 </style>

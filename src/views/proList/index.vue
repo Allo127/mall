@@ -25,6 +25,12 @@
 				<p class="desc">描述信息</p>
 				<p class="price">￥2.00</p>
 			</div>
+			<div class="cardItem">
+				<img src="https://img.yzcdn.cn/vant/ipad.jpeg" alt="">
+				<p class="title">商品标题</p>
+				<p class="desc">描述信息</p>
+				<p class="price">￥2.00</p>
+			</div>
 		</div>
 	</div>
 </template>
@@ -38,6 +44,9 @@
 			}
 		},
 		methods: {
+			onClickLeft() {
+				this.$router.back()
+			},
 			goSearch() {
 				this.$router.push("/search")
 			},
@@ -73,12 +82,13 @@
 
 	.cardItem {
 		width: 40%;
-		height: 180px;
+		height: 190px;
 		padding: 8px 16px;
 		background-color: #fafafa;
 		color: #323233;
 		font-size: 12px;
 		text-align: center;
+		margin-bottom: 10px;
 	}
 
 	.cardItem img {

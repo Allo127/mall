@@ -5,6 +5,7 @@ import {
 	EDIT_ADDRESS_INFO,
 	DELELETE_ADDRESS,
 	SAVE_CHANGE_DETAIL,
+	//分类数据
 	CATAGOTY_DATA
 } from './types.js'
 export default {

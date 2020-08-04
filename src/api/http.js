@@ -1,7 +1,7 @@
 import axios from 'axios'
 // 封装axios
-axios.defaults.baseURL = 'http://192.168.5.6:8088/'
-
+// axios.defaults.baseURL = 'http://192.168.5.6:8088/'
+axios.defaults.baseURL = 'http://39.102.38.113:8088/'
 /*
  * 设置超时请求时间
  */
@@ -15,13 +15,13 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-from-urlencoded'
  */
 
 axios.interceptors.response.use(
-  response => {
-    // 返回响应主体中的信息,例如知道服务器返回CODE值来知道成功还是失败
-    return response.data
-  },
-  error => {
-    return Promise.reject(error)
-  }
+	response => {
+		// 返回响应主体中的信息,例如知道服务器返回CODE值来知道成功还是失败
+		return response.data
+	},
+	error => {
+		return Promise.reject(error)
+	}
 )
 
 export default axios
