@@ -8,12 +8,18 @@ import Address from '../views/address/Address.vue'
 import AddressAdd from '../views/address/AddressAdd.vue'
 import AddressEdit from '../views/address/AddressEdit.vue'
 import productDetail from '../views/Detail/Detail.vue'
+import searchbar from '../components/SearchBar.vue'
 Vue.use(VueRouter)
 
 const routes = [{
 		path: '/',
 		redirect: '/Home'
 	},
+  {
+  		path: '/Search',
+  		name: 'Search',
+      component: searchbar
+  	},
 	{
 		path: '/Home',
 		name: 'Home',
