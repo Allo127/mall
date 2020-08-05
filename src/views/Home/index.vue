@@ -15,6 +15,8 @@
 <!--    这是首页1{{this.showBgColor}} -->
     <!-- 人气推荐 -->
     <popular></popular>
+    <!-- 优选推荐 -->
+    <wellgoods></wellgoods>
     <menubar></menubar>
   </div>
 </template>
@@ -26,6 +28,7 @@
   import iconnav from './base/IconNav.vue'
   import Spike from "./base/Spike"
   import popular from "./base/Popular.vue"
+  import wellgoods from "./base/WellGoods.vue"
   // import {
   //   mapState
   // } from 'vuex'
@@ -111,7 +114,8 @@
       sowing,
       iconnav,
       Spike,
-      popular
+      popular,
+      wellgoods
     },
     methods: {
       changeshowBgColor(val) {
