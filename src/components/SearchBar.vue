@@ -16,7 +16,7 @@
         </svg>
         <!-- 跳转到地图界面 -->
         <router-link to="" tag="span" class="address">请选择位置</router-link>
-        <svg-icon iconClass="up_real" />
+<!--        <svg-icon iconClass="up_real" /> -->
       </div>
       <div class="searchWrapper" ref="search" @click="goSearch">
         <div class="searchContent">
@@ -33,9 +33,15 @@
 </template>
 <script type="text/javascript">
   export default {
+    props: {
+      // 接受父组件传过来的数据
+      showBgColor: {
+        type: Boolean,
+        default: true
+      }
+    },
     data() {
       return {
-        showBgColor: true,
         inputGoodsName: '请输入商品名称'
       }
     }
@@ -46,10 +52,11 @@
   .wrapper {
     position: fixed;
     left: 0;
-    top: 0;
+    top: 0px;
     z-index: 2;
-    height: 3.125rem;
-    line-height: 3.125rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    padding-top:0.1rem;
     width: 100%;
     box-sizing: border-box;
     border-top: solid 1px #eeeeee;
@@ -57,37 +64,39 @@
     display: flex;
   }
 
-  .searchbar{
-    height: 3.125rem;
+  .searchbar {
+    height: 1.4rem;
   }
 
   .iconLocation {
     position: absolute;
-    left: 0.3rem;
-    top: 1.0625rem;
-    width: 1.875rem;
+    left: 0.5rem;
+    top: 0.33rem;
+    width: 1rem;
     height: 1rem;
     vertical-align: middle;
   }
 
   // 地址框
   .locationWrapper {
-    margin-top: 0.6rem;
-    height: 1.875rem;
-    line-height: 1.875rem;
+    margin-top: 0.1rem;
+    margin-left: 0.2rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
     max-width: 55%;
     white-space: nowrap;
     opacity: 0.6;
     min-width: 23%;
     background-color: black;
-    border-radius: 3.125rem;
+    border-radius: 1.125rem;
     flex: 0, 0, 20rem;
   }
 
   .locationWrapper .address {
-    padding-left: 1.7rem;
+    padding-left: 1rem;
+    padding-right: 0.5rem;
     display: inline-block;
-    font-size: 0.8rem;
+    font-size: 0.4rem;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -109,9 +118,9 @@
   // 搜索框
   .searchWrapper {
     flex: 1;
-    top: 0.625rem;
-    height: 3.125rem;
-    line-height: 3.125rem;
+    top:  0.1rem;
+    height: 1.125rem;
+    line-height: 1.125rem;
   }
 
   .searchWrapper.wheel {
@@ -121,13 +130,13 @@
   }
 
   .searchContent {
-    margin-top: 0.625rem;
+    margin-top: 0.1rem;
     flex: 1;
     margin-right: 2%;
     margin-left: 2%;
     border-radius: 3.125rem;
-    height: 1.875rem;
-    line-height: 1.875rem;
+    height: 0.9rem;
+    line-height: 0.9rem;
     text-align: center;
     background: #f2f2f2;
     vertical-align: middle;
@@ -135,23 +144,23 @@
 
   .iconSearchWrapper {
     display: inline-block;
-    width: 1.25rem;
+    // width: 1.25rem;
     height: 100%;
     vertical-align: middle;
   }
 
   .iconSearch {
-    margin-top: 0.3125rem;
-    width: 1.25rem;
-    height: 1.25rem;
+    margin-top: 0.2rem;
+    width: 0.25rem;
+    height: 0.25rem;
   }
 
   .searchPrompt {
     display: inline-block;
     vertical-align: top;
-    margin-left: 0.25rem;
+    // margin-left: 0.25rem;
     text-align: center;
-    font-size: 0.875rem;
+    font-size: 0.4rem;
     color: #999999;
   }
 
@@ -175,7 +184,7 @@
 
   .icon {
     fill: #999;
-    width: 1rem;
-    height: 1rem;
+    width: 0.5rem;
+    height: 0.5rem;
   }
 </style>
