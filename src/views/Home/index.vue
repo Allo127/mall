@@ -10,6 +10,8 @@
     </div>
     <!-- 图标导航 -->
     <iconnav :icons="icons"></iconnav>
+    <!-- 秒杀 -->
+    <spike></spike>
     这是首页1
     <menubar></menubar>
   </div>
@@ -20,6 +22,7 @@
   import searchbar from '../../components/SearchBar.vue'
   import sowing from './base/Sowing.vue'
   import iconnav from './base/IconNav.vue'
+  import Spike from "./base/Spike"
   // import {
   //   mapState
   // } from 'vuex'
@@ -102,7 +105,8 @@
       searchbar,
       menubar,
       sowing,
-      iconnav
+      iconnav,
+      Spike
     }
   }
 </script>
