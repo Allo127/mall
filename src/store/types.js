@@ -2,6 +2,13 @@
 export const SET_BANNER_IMAGES = 'SET_BANNER_IMAGES' // 设置banner图片
 //===========分类部分数据==================
 export const CATAGOTY_DATA = 'CATAGOTY_DATA' //分类数据
+//==========商品列表部分数据=================
+export const ALLPRO_DATA = 'ALLPRO_DATA' //综合排序
+export const NUMPRO_DATA = 'NUMPRO_DATA' //按销量
+export const POIPRO_DATA = 'POIPRO_DATA' //按价格
+export const ALLPRO_DATA_C = 'ALLPRO_DATA_C' //分类综合排序
+export const NUMPRO_DATA_C = 'NUMPRO_DATA_C' //分类按销量
+export const POIPRO_DATA_C = 'POIPRO_DATA_C' //分类按价格
 //=================地址部分开始==========================
 // 收货地址列表
 export const ADDRESS_LIST = "ADDRESS_LIST"

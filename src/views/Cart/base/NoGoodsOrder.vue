@@ -6,41 +6,41 @@
 				 alt />
 				<div class="noCart-title">去添加点东西吧</div>
 			</div>
-			<div class="to-login">
+			<!-- <div class="to-login">
 				<van-button @click="goLogin" round block type="danger">{{tipsTxt}}</van-button>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>
 
 <script>
 	export default {
-		props: {
-			tipsTxt: {
-				type: String,
-				default: "去登录"
-			}
-		},
-		methods: {
-			// 登录按钮，去逛逛
-			goLogin() {
-				if (this.tipsTxt === "去登录") {
-					this.$toast.loading({
-						message: "加载中...",
-						forbidClick: true
-					})
-					setTimeout(() => {
-						this.$toast.clear()
-						this.$router.push("/login")
-					}, 1000)
-				} else {
-					this.$toast.loading({
-						message: "正在赶集中...",
-						forbidClick: true
-					})
-				}
-			}
-		}
+		// props: {
+		// 	tipsTxt: {
+		// 		type: String,
+		// 		default: "去登录"
+		// 	}
+		// },
+		// methods: {
+		// 	// 登录按钮，去逛逛
+		// 	goLogin() {
+		// 		if (this.tipsTxt === "去登录") {
+		// 			this.$toast.loading({
+		// 				message: "加载中...",
+		// 				forbidClick: true
+		// 			})
+		// 			setTimeout(() => {
+		// 				this.$toast.clear()
+		// 				this.$router.push("/login")
+		// 			}, 1000)
+		// 		} else {
+		// 			this.$toast.loading({
+		// 				message: "正在赶集中...",
+		// 				forbidClick: true
+		// 			})
+		// 		}
+		// 	}
+		// }
 	}
 </script>
 

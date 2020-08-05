@@ -99,9 +99,9 @@
 		},
 		data() {
 			return {
-				tipsTxt: "去登录",
+				// tipsTxt: "去登录",
 				allChecked: true, //订单全选
-				hisGoodsOrder: false, //是否有商品订单
+				hisGoodsOrder: true, //是否有商品订单
 				isLoading: false, //提交订单按钮提交loading状态
 				result: [], //店铺 全选
 				allShops: 0, // 被选中的商店数量
@@ -150,10 +150,10 @@
 				]
 			}
 		},
-		created() {
-			const TOKEN = this.$Cookies.get("TOKEN")
-			TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录")
-		},
+		// created() {
+		// 	const TOKEN = this.$Cookies.get("TOKEN")
+		// 	TOKEN ? (this.hisGoodsOrder = true) : (this.tipsTxt = "去登录")
+		// },
 		methods: {
 			// 提交订单跳转
 			onSubmit() {
@@ -237,27 +237,27 @@
 						--this.cartInfoList.allShops
 				}
 				this.cartInfoList.allChecked = false
-			},
-			choosetrue(item, pros) {
-				pros.isSelected = true
-					++item.checkedCount === item.productList.length ?
-					(item.checkedShop = true) :
-					""
-				item.checkedShop ?
-					++this.cartInfoList.allShops === this.cartInfoList.length ?
-					(this.cartInfoList.allChecked = true) :
-					(this.cartInfoList = false) :
-					""
 			}
-		},
-		watch: {
-			cartInfoList(newValue) {
-				const isLogin = localStorage.getItem("isLogin")
-				if (!newValue.length && isLogin) {
-					this.tipsTxt = "去逛逛看"
-				}
-			}
+			// choosetrue(item, pros) {
+			// 	pros.isSelected = true
+			// 		++item.checkedCount === item.productList.length ?
+			// 		(item.checkedShop = true) :
+			// 		""
+			// 	item.checkedShop ?
+			// 		++this.cartInfoList.allShops === this.cartInfoList.length ?
+			// 		(this.cartInfoList.allChecked = true) :
+			// 		(this.cartInfoList = false) :
+			// 		""
+			// }
 		}
+		// watch: {
+		// 	cartInfoList(newValue) {
+		// 		const isLogin = localStorage.getItem("isLogin")
+		// 		if (!newValue.length && isLogin) {
+		// 			this.tipsTxt = "去逛逛看"
+		// 		}
+		// 	}
+		// }
 	}
 </script>
 

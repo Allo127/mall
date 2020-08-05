@@ -1,6 +1,15 @@
 export default {
 	//分类数据
 	catagoryData: JSON.parse(localStorage.getItem('catagoryData')) || [],
+	//商品展示
+	proList: JSON.parse(localStorage.getItem('proList')) || [],
+	proListByNum: JSON.parse(localStorage.getItem('proListByNum')) || [],
+	proListByPri: JSON.parse(localStorage.getItem('proListByPri')) || [],
+	activeList: [],
+	viewKey: 0,
+	proListC: JSON.parse(localStorage.getItem('proListC')) || [],
+	proListByNumC: JSON.parse(localStorage.getItem('proListByNumC')) || [],
+	proListByPriC: JSON.parse(localStorage.getItem('proListByPriC')) || [],
 	//商品优惠卷列表显隐
 	isShowCoupon: false,
 	// 收货人地址列表

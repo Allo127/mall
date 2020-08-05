@@ -32,8 +32,6 @@
 							<GridCart :title="item.category_name" v-for="(item,index) in content" :key="index" :Data="item.children"></GridCart>
 						</div>
 					</div>
-					<!-- 分类内容部分
-					<category-content></category-content> -->
 				</div>
 			</van-col>
 		</van-row>
@@ -45,7 +43,7 @@
 	// import CategoryContent from "./base/CategoryContent"
 	import BScroll from "better-scroll"
 	import menubar from '../../components/MenuBar.vue'
-	import GridCart from "../../components/GridCart"
+	import GridCart from "./base/GridCart.vue"
 	import {
 		mapState,
 		mapMutations

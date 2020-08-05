@@ -6,7 +6,9 @@
 		<van-grid :column-num="column" class="border-r-5">
 			<van-grid-item v-for="(item,index) in Data" :key="index" :text="item.category_name">
 				<div slot="icon">
-					<img class="icon-img" :src="item.carousel_small" :alt="item.category_name">
+					<router-link :to="{ name: 'proList', params: { cid: item.category_id }}">
+						<img class="icon-img" :src="item.carousel_small" :alt="item.category_name">
+					</router-link>
 				</div>
 			</van-grid-item>
 		</van-grid>
@@ -44,6 +46,18 @@
 			.icon-img {
 				width: 56px;
 				height: 56px;
+			}
+		}
+	}
+
+	.category-content {
+		padding: 10px;
+
+		.catrgory-swipe {
+			overflow: hidden;
+
+			.swipe-img {
+				width: 100%;
 			}
 		}
 	}

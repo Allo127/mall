@@ -13,6 +13,8 @@ import {
 	Card,
 	Col,
 	Cell,
+	Checkbox,
+	CheckboxGroup,
 	Divider,
 	Field,
 	Grid,
@@ -29,8 +31,14 @@ import {
 	Tag,
 	TabbarItem,
 	Toast,
+	Step,
+	Steps,
+	Stepper,
 	Swipe,
 	SwipeItem,
+	SwipeCell,
+	SwitchCell,
+	SubmitBar,
 	Sku,
 	Lazyload,
 	NavBar,
@@ -44,7 +52,8 @@ import {
 Vue.use(Tabbar).use(TabbarItem).use(SwipeItem).use(Swipe).use(Lazyload).use(Sticky).use(AddressEdit).use(AddressList).use(
 	Area).use(Grid).use(GridItem).use(Search).use(Row).use(Col).use(Sidebar).use(SidebarItem).use(Icon).use(NavBar).use(
 	Button).use(Toast).use(Image).use(ImagePreview).use(Tag).use(Divider).use(GoodsAction).use(GoodsActionIcon).use(
-	GoodsActionButton).use(Sku).use(Tab).use(Tabs).use(Card).use(Field).use(ActionSheet).use(Cell)
+	GoodsActionButton).use(Sku).use(Tab).use(Tabs).use(Card).use(Field).use(ActionSheet).use(Cell).use(Checkbox).use(
+	CheckboxGroup).use(SwipeCell).use(SwitchCell).use(Step).use(Steps).use(Stepper).use(SubmitBar)
 
 Vue.config.productionTip = false
 

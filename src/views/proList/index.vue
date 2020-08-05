@@ -7,31 +7,44 @@
 				<van-search @focus="goSearch" input-align="center" shape="round" placeholder="请输入搜索关键词" v-model="Searchvalue" />
 			</van-sticky>
 		</div>
-		<van-tabs v-model="active">
-			<van-tab title="综合">内容 1</van-tab>
-			<van-tab title="销量">内容 2</van-tab>
-			<van-tab title="价格">内容 3</van-tab>
+		<van-tabs v-model="active" @click="change()">
+			<van-tab title="综合">
+				<div class="card2">
+					<div class="cardItem" v-for="(item,index) in list" :key="index">
+						<router-link :to="{ name: 'proD', params: { pid: item.goods_id }}">
+							<img :src="item.goods_cover_img" alt="">
+							<p class="title" :title="item.goods_name">{{item.goods_name}}</p>
+							<p class="desc" :title="item.goods_intro">{{item.goods_intro}}</p>
+							<p class="price">￥{{item.selling_price}}</p>
+						</router-link>
+					</div>
+				</div>
+			</van-tab>
+			<van-tab title="销量">
+				<div class="card2">
+					<div class="cardItem" v-for="(item,index) in list" :key="index">
+						<router-link :to="{ name: 'proD', params: { pid: item.goods_id }}">
+							<img :src="item.goods_cover_img" alt="">
+							<p class="title" :title="item.goods_name">{{item.goods_name}}</p>
+							<p class="desc" :title="item.goods_intro">{{item.goods_intro}}</p>
+							<p class="price">￥{{item.selling_price}}</p>
+						</router-link>
+					</div>
+				</div>
+			</van-tab>
+			<van-tab title="价格">
+				<div class="card2">
+					<div class="cardItem" v-for="(item,index) in list" :key="index">
+						<router-link :to="{ name: 'proD', params: { pid: item.goods_id }}">
+							<img :src="item.goods_cover_img" alt="">
+							<p class="title" :title="item.goods_name">{{item.goods_name}}</p>
+							<p class="desc" :title="item.goods_intro">{{item.goods_intro}}</p>
+							<p class="price">￥{{item.selling_price}}</p>
+						</router-link>
+					</div>
+				</div>
+			</van-tab>
 		</van-tabs>
-		<div class="card2">
-			<div class="cardItem">
-				<img src="https://img.yzcdn.cn/vant/ipad.jpeg" alt="">
-				<p class="title">商品标题</p>
-				<p class="desc">描述信息</p>
-				<p class="price">￥2.00</p>
-			</div>
-			<div class="cardItem">
-				<img src="https://img.yzcdn.cn/vant/ipad.jpeg" alt="">
-				<p class="title">商品标题</p>
-				<p class="desc">描述信息</p>
-				<p class="price">￥2.00</p>
-			</div>
-			<div class="cardItem">
-				<img src="https://img.yzcdn.cn/vant/ipad.jpeg" alt="">
-				<p class="title">商品标题</p>
-				<p class="desc">描述信息</p>
-				<p class="price">￥2.00</p>
-			</div>
-		</div>
 	</div>
 </template>
 
@@ -40,19 +53,50 @@
 		data() {
 			return {
 				Searchvalue: "",
-				active: 2
+				active: 0,
+				list: [],
+				cid: 20
 			}
 		},
 		methods: {
+			async getList() {
+				if (this.active === 0) {
+					this.$api.proList.getProListC(this.cid).then(({
+						data
+					}) => {
+						this.list = data
+						// console.log(this.ALLPRO_DATA)
+					})
+				} else if (this.active === 1) {
+					this.$api.proList.getProListByNumC(this.cid).then(({
+						data
+					}) => {
+						// console.log(data)
+						this.list = data
+					})
+				} else if (this.active === 2) {
+					this.$api.proList.getProListByPriC(this.cid).then(({
+						data
+					}) => {
+						// console.log(data)
+						this.list = data
+					})
+				}
+			},
 			onClickLeft() {
 				this.$router.back()
 			},
 			goSearch() {
 				this.$router.push("/search")
 			},
-			change(index) {
-				this.contentActive = index
+			change() {
+				this.getList()
 			}
+		},
+		mounted() {
+			this.cid = this.$route.params.cid
+			console.log(this.cid)
+			this.getList()
 		}
 	}
 </script>

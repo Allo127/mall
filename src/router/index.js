@@ -7,7 +7,6 @@ import Me from '../views/Me/index.vue'
 import Address from '../views/address/Address.vue'
 import AddressAdd from '../views/address/AddressAdd.vue'
 import AddressEdit from '../views/address/AddressEdit.vue'
-import productDetail from '../views/Detail/Detail.vue'
 import server from '../views/SystemSet/server.vue'
 import quesInfo from '../views/SystemSet/quesInfo.vue'
 import proList from '../views/proList/index.vue'
@@ -18,6 +17,7 @@ import searchbar from '../components/SearchBar.vue'
 import topPro from '../views/proList/topWelPro.vue'
 import goodTopic from '../views/proList/goodTopic.vue'
 import Topic from '../views/proList/topic.vue'
+import proD from '../views/Detail/goodsDetail.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -64,11 +64,6 @@ const routes = [{
 		component: AddressEdit
 	},
 	{
-		path: '/productDetail',
-		name: 'productDetail',
-		component: productDetail
-	},
-	{
 		path: '/server',
 		name: 'server',
 		component: server
@@ -112,6 +107,11 @@ const routes = [{
 		path: '/Topic',
 		name: 'Topic',
 		component: Topic
+	},
+	{
+		path: '/proD',
+		name: 'proD',
+		component: proD
 	}
 ]
 

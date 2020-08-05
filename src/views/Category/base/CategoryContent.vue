@@ -1,4 +1,4 @@
-<template>
+<!-- <template>
 	<div class="category-content">
 		<div class="catrgory-swipe">
 			<van-swipe :autoplay="3000" indicator-color="white">
@@ -11,16 +11,16 @@
 			</van-swipe>
 		</div>
 		<!-- grid card -->
-		<div class="content-item">
+<!-- <div class="content-item">
 			<GridCart :Data="HotData" title="热门推荐" />
 			<GridCart :Data="NurseData" title="个人护理保健" />
 			<GridCart :Data="HotData" title="大家电" />
 			<GridCart :Data="NurseData" title="中式厨电" />
 		</div>
 	</div>
-</template>
+</template> -->
 
-<script>
+<!-- <script>
 	import GridCart from "../../../components/GridCart"
 	export default {
 		components: {
@@ -119,4 +119,4 @@
 			}
 		}
 	}
-</style>
+</style> -->
