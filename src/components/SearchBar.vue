@@ -16,7 +16,7 @@
         </svg>
         <!-- 跳转到地图界面 -->
         <router-link to="" tag="span" class="address">请选择位置</router-link>
-<!--        <svg-icon iconClass="up_real" /> -->
+        <!--        <svg-icon iconClass="up_real" /> -->
       </div>
       <div class="searchWrapper" ref="search" @click="goSearch">
         <div class="searchContent">
@@ -35,16 +35,31 @@
   export default {
     props: {
       // 接受父组件传过来的数据
-      showBgColor: {
-        type: Boolean,
-        default: true
-      }
+      showBgColor: Boolean
     },
     data() {
       return {
         inputGoodsName: '请输入商品名称'
       }
-    }
+    },
+    mounted() {
+      this.$nextTick(() => {
+        //监听滚动事件
+        window.addEventListener('scroll', () => {
+          var scrollTopE = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+          // let screenHeight = window.screen.availHeight
+          if (scrollTopE > 168) {
+            // 添加搜索栏颜色
+            this.$emit('changeshowBgColor', true)
+            // console.log("true")
+          } else {
+            this.$emit('changeshowBgColor', false)
+            // console.log("false")
+          }
+        })
+      })
+    },
+    methods: {}
   }
 </script>
 
@@ -56,7 +71,7 @@
     z-index: 2;
     height: 1.4rem;
     line-height: 1.4rem;
-    padding-top:0.1rem;
+    padding-top: 0.1rem;
     width: 100%;
     box-sizing: border-box;
     border-top: solid 1px #eeeeee;
@@ -118,7 +133,7 @@
   // 搜索框
   .searchWrapper {
     flex: 1;
-    top:  0.1rem;
+    top: 0.1rem;
     height: 1.125rem;
     line-height: 1.125rem;
   }
