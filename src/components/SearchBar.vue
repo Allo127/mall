@@ -33,9 +33,15 @@
 </template>
 <script type="text/javascript">
   export default {
+    props: {
+      // 接受父组件传过来的数据
+      showBgColor: {
+        type: Boolean,
+        default: true
+      }
+    },
     data() {
       return {
-        showBgColor: true,
         inputGoodsName: '请输入商品名称'
       }
     }
@@ -57,7 +63,7 @@
     display: flex;
   }
 
-  .searchbar{
+  .searchbar {
     height: 3.125rem;
   }
 
