@@ -18,6 +18,10 @@ import {
 	CheckboxGroup,
 	Divider,
 	Field,
+<<<<<<< HEAD
+=======
+  Loading,
+>>>>>>> 91de17c3c1c055951a81412b2440bb82aabe6d28
 	Grid,
 	GridItem,
 	GoodsAction,
@@ -48,8 +52,9 @@ import {
 	Search,
 	Row,
 	Sidebar,
-	SidebarItem, // 添加的组件
-	CountDown
+	SidebarItem,// 添加的组件
+  CountDown,
+  Progress
 } from 'vant'
 
 Vue.use(flexible).use(Tabbar).use(TabbarItem).use(SwipeItem).use(Swipe).use(Lazyload).use(Sticky).use(AddressEdit).use(
@@ -57,7 +62,11 @@ Vue.use(flexible).use(Tabbar).use(TabbarItem).use(SwipeItem).use(Swipe).use(Lazy
 	NavBar).use(Button).use(Toast).use(Image).use(ImagePreview).use(Tag).use(Divider).use(GoodsAction).use(
 	GoodsActionIcon).use(GoodsActionButton).use(Sku).use(Tab).use(Tabs).use(Card).use(Field).use(ActionSheet).use(Cell).use(
 	Checkbox).use(CheckboxGroup).use(SwipeCell).use(SwitchCell).use(Step).use(Steps).use(Stepper).use(SubmitBar).use(
+<<<<<<< HEAD
 	CountDown).use(Loading)
+=======
+	CountDown).use(Loading).use(Progress)
+>>>>>>> 91de17c3c1c055951a81412b2440bb82aabe6d28
 
 Vue.config.productionTip = false
 

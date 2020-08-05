@@ -2,7 +2,7 @@
   <div class="home">
     <div class="head">
       <!-- 搜索栏 -->
-      <searchbar :showBgColor="false"></searchbar>
+      <searchbar :showBgColor="true" @changeshowBgColor='changeshowBgColor($event)'></searchbar>
       <!-- 轮播图 -->
       <div class="swiper-wrapper-w">
         <sowing :sowing_list="sowing_list"></sowing>
@@ -12,7 +12,9 @@
     <iconnav :icons="icons"></iconnav>
     <!-- 秒杀 -->
     <spike></spike>
-    这是首页1
+<!--    这是首页1{{this.showBgColor}} -->
+    <!-- 人气推荐 -->
+    <popular></popular>
     <menubar></menubar>
   </div>
 </template>
@@ -23,6 +25,7 @@
   import sowing from './base/Sowing.vue'
   import iconnav from './base/IconNav.vue'
   import Spike from "./base/Spike"
+  import popular from "./base/Popular.vue"
   // import {
   //   mapState
   // } from 'vuex'
@@ -33,6 +36,7 @@
     },
     data() {
       return {
+        showBgColor: false,
         sowing_list: [
           'http://picasso.alicdn.com/imgextra/i3/357713/O1CNA1RtCyMq100e8223db2c0b1b2e8a000l_!!357713-0-picassobanner.jpg',
           'http://gw.alicdn.com/imgextra/i1/174/O1CN01D1yNiN1D9jWqw3xQ4_!!174-0-lubanu.jpg',
@@ -106,7 +110,14 @@
       menubar,
       sowing,
       iconnav,
-      Spike
+      Spike,
+      popular
+    },
+    methods: {
+      changeshowBgColor(val) {
+        this.showBgColor = val
+        // console.log('changeshowBgColor' + this.showBgColor)
+      }
     }
   }
 </script>
@@ -121,7 +132,9 @@
     border-radius: 5px;
     overflow: hidden;
   }
-
+  .home{
+    padding-bottom: 30px;
+  }
   .head {
     width: 100%;
     background-image: url("http://518taole.7-orange.cn/backImage.png");

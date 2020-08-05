@@ -3,7 +3,7 @@
     <!-- 秒杀倒计时 -->
     <van-row type="flex" justify="space-between">
       <van-col class="title">
-        <van-icon class-prefix="iconfont icon-miaosha" />
+       <van-icon name="clock" color="#ff5500" />
         <span>限时秒杀</span>
         <van-count-down :time="time">
           <template v-slot="timeData">
@@ -56,9 +56,8 @@
       justify-content: center;
       align-items: center;
 
-      .icon-miaosha {
-        font-size: 20px;
-        color: #f06c7a;
+      .van-icon {
+        font-size: 18px;
         margin-right: 5px;
       }
 
@@ -76,7 +75,7 @@
         color: #fff;
         font-size: 12px;
         text-align: center;
-        background-color: #f06c7a;
+        background-color: #ff5500;
       }
     }
 
@@ -107,7 +106,7 @@
 
           span {
             font-size: 14px;
-            color: #f06c7a;
+            color: #ff5500;
           }
 
           s {
