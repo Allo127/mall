@@ -12,11 +12,12 @@
 					<section class="cart-warpper">
 						<van-icon name="cart-o" size="95" />
 					</section>
-					<section class="desc">{{userToken?'购物车是空的，马上shopping吧~~':'请先登录噢~~'}}</section>
-					<section class="login">
+					<section class="desc">'购物车是空的，马上shopping吧~~'</section>
+					<!-- <section class="desc">{{userToken?'购物车是空的，马上shopping吧~~':'请先登录噢~~'}}</section> -->
+					<!-- <section class="login">
 						<van-button round type="info" v-if="userToken" to="/">去购物</van-button>
 						<van-button round type="info" v-else to="/login">去登录</van-button>
-					</section>
+					</section> -->
 				</div>
 				<!-- 有商品的购物车 -->
 				<div class="shop-cart" v-if="!loadingStatus && shopCartList.length">
@@ -34,14 +35,14 @@
 										<li v-for="(item, index) in shopCartList" :key="index">
 											<van-checkbox v-model="item.checked"></van-checkbox>
 											<div class="goodLeft">
-												<img :src="item.image_path" alt />
+												<img :src="item.goods_info[0].goods_cover_img" alt />
 											</div>
 											<div class="goodRight">
-												<p>{{item.goods_name}}</p>
+												<p>{{item.goods_info[0].goods_name}}</p>
 												<div class="wrapper">
-													<p>￥{{item.present_price}}/件</p>
+													<p>￥{{item.goods_info[0].selling_price}}/件</p>
 													<div class="stepper">
-														<van-stepper v-model="item.buy_count" />
+														<van-stepper v-model="item.goods_count" />
 													</div>
 												</div>
 											</div>
@@ -72,13 +73,15 @@
 	import Tabbar from '../../components/Tabbar.vue'
 	import Topbar from '../../components/Topbar.vue'
 	import BScroll from '../../components/BetterScroll.vue'
+	import Loading from '../../components/Loading.vue'
 	// import { GoodsMixin } from '@/mixins/goodsMixin'
 
 	export default {
 		components: {
 			Tabbar,
 			Topbar,
-			BScroll
+			BScroll,
+			Loading
 		},
 		// mixins: [GoodsMixin],
 		data() {
@@ -87,7 +90,9 @@
 				checked: false,
 				shopCartList: [],
 				value: 1,
-				isShowManage: false // 控制是否显示管理页面
+				isShowManage: false, // 控制是否显示管理页面
+				uid: 1,
+				loadingStatus: false
 			}
 		},
 		computed: {
@@ -96,7 +101,7 @@
 				let totalPrice = 0
 				this.shopCartList.forEach(item => {
 					if (item.checked) {
-						totalPrice += item.present_price * 100 * item.buy_count
+						totalPrice += item.goods_info[0].selling_price * 100 * item.goods_count
 					}
 				})
 				return totalPrice
@@ -124,15 +129,15 @@
 		},
 		methods: {
 			// 转到结算界面
-			goConfirmOrder() {
-				const goods = this.getCheckGood()
-				if (goods.length !== 0) {
-					this.SET_CONFIRM_ORDER_INFO(goods)
-					this.$router.push('ConfirmOrder')
-				} else {
-					this.$toast('未选中商品')
-				}
-			},
+			// goConfirmOrder() {
+			// 	const goods = this.getCheckGood()
+			// 	if (goods.length !== 0) {
+			// 		this.SET_CONFIRM_ORDER_INFO(goods)
+			// 		this.$router.push('ConfirmOrder')
+			// 	} else {
+			// 		this.$toast('未选中商品')
+			// 	}
+			// },
 			// 获取已经选中的商品
 			getCheckGood() {
 				return this.shopCartList.filter(val => val.checked === true)
@@ -140,30 +145,31 @@
 			// 全选与取消逻辑，通过遍历数组实现
 			checkAll() {
 				const cache = !this.checked
+				console.log(this.checked)
+				console.log(cache)
 				this.shopCartList.forEach(item => {
 					item.checked = cache
 				})
 			},
 			// 获取购物车信息
 			async _getCartInfo() {
-				try {
-					const res = await this.$api.users.getCartInfo()
-					if (res.code === 200) {
-						this.shopCartList = res.shopCartList
-						this.loadingStatus = false
-					}
-				} catch (error) {
-					this.loadingStatus = false
-					this.$toast(error.msg)
-				}
+				this.$api.cart.cartList(this.uid).then(({
+					data
+				}) => {
+					console.log(data)
+					this.shopCartList = data
+				})
 			},
 			// 删除购物车商品
 			async _delCartGoods() {
-				const delGoodsIds = this.getCheckGood().map(val => val.goodsId)
+				const delGoodsIds = this.getCheckGood().map(val => val.cart_item_id)
+				console.log(delGoodsIds)
+				// const res = await this.$api.cart.delCart(delGoodsIds)
+				// if(res)
 				try {
-					const res = await this.$api.users.delCartGoods(delGoodsIds)
-					if (res.code === 200) {
-						this.$toast(res.msg)
+					const res = await this.$api.cart.delCart(delGoodsIds)
+					if (res.status === 200) {
+						this.$toast("删除成功")
 						this._getCartInfo()
 					}
 				} catch (error) {
@@ -176,11 +182,12 @@
 			}
 		},
 		created() {
-			if (this.userToken) {
-				this._getCartInfo()
-			} else {
-				this.loadingStatus = false
-			}
+			// if (this.userToken) {
+			this._getCartInfo()
+			this.checked = false
+			// } else {
+			// 	this.loadingStatus = false
+			// }
 		}
 	}
 </script>

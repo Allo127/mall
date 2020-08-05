@@ -4,6 +4,7 @@
 		<van-sku v-model="showSku" :sku="sku" :goods="goods" :goods-id="goodsId" :quota="quota" :quota-used="quotaUsed"
 		 :hide-stock="sku.hide_stock" safe-area-inset-bottom show-add-cart-btn reset-stepper-on-hide @buy-clicked="onBuyClicked"
 		 @add-cart="onAddCartClicked"></van-sku>
+
 	</div>
 </template>
 
@@ -15,6 +16,9 @@
 				goodsId: 23444, //商品id
 				quota: 0, //限购数，0表示不限购
 				quotaUsed: 345, //已经购买过的数量
+				uid: 1,
+				pid: 10005,
+				num: 1,
 				sku: {
 					//规格数据
 					hide_stock: false, //是否显示商品库存
@@ -137,6 +141,12 @@
 				})
 				setTimeout(() => {
 					this.$toast.clear()
+					this.$api.cart.addCart(this.uid, this.pid, this.num).then(({
+						data
+					}) => {
+						console.log(data)
+						this.shopCartList = data
+					})
 					this.$toast.success('添加成功')
 					this.showSku = false
 				}, 1000)

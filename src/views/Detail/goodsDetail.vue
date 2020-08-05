@@ -49,7 +49,7 @@
 		<div class="goodAction">
 			<van-goods-action>
 				<van-goods-action-icon icon="wap-home-o" to="/" text="首页" />
-				<van-goods-action-icon icon="cart-o" to="/cart" text="购物车" />
+				<van-goods-action-icon icon="cart-o" to="/cartTest" text="购物车" />
 				<van-goods-action-button type="warning" text="加入购物车" @click="addToCart" />
 				<van-goods-action-button type="danger" text="立即购买" />
 			</van-goods-action>
@@ -102,6 +102,7 @@
 			},
 			addToCart() {
 				this.$refs.sku._data.showSku = true
+				this.$refs.sku._data.pid = this.pid
 			},
 			// 添加到购物车
 			// async _addToCart() {
