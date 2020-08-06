@@ -23,6 +23,8 @@ import Set from '../views/Set/Set.vue'
 import submitOrder from '../views/Order/base/SubmitOrder.vue'
 import orderPay from '../views/Order/base/OrderPay.vue'
 import paySuccess from '../views/Order/base/PaySuccess.vue'
+import Login from '../views/Login/Login.vue'
+import Register from '../views/Login/Register.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -121,20 +123,20 @@ const routes = [{
   {
     path: "/Order",
     name: "Order",
-    component: Order
-    // beforeEnter: (to, from, next) => {
-    //   const isLogin = localStorage.getItem("isLogin")
-    //   isLogin ? next() : next("/login")
-    // }
+    component: Order,
+    beforeEnter: (to, from, next) => {
+      const isLogin = localStorage.getItem("isLogin")
+      isLogin ? next() : next("/Login")
+    }
   },
   {
     path: "/Set",
     name: "Set",
-    component: Set
-    // beforeEnter: (to, from, next) => {
-    //   const isLogin = localStorage.getItem("isLogin")
-    //   isLogin ? next() : next("/login")
-    // }
+    component: Set,
+    beforeEnter: (to, from, next) => {
+      const isLogin = localStorage.getItem("isLogin")
+      isLogin ? next() : next("/Login")
+    }
   },
   {
     path: "/submitOrder",
@@ -150,6 +152,16 @@ const routes = [{
     path: "/paySuccess",
     name: "paySuccess",
     component: paySuccess
+  },
+ {
+   path: "/Login",
+   name: "Login",
+   component: Login
+ },
+  {
+    path: "/Register",
+    name: "Register",
+    component: Register
   }
 ]
 

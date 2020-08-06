@@ -6,7 +6,7 @@
           <img src="../../../assets/images/avatar.jpg" />
         </div>
         <div class="user-name">
-          <div class="name">你好,Allo</div>
+          <div class="name">你好,{{$Cookies.get("TOKEN")}}</div>
           <div>享受生活,享受Happy Shopping!</div>
         </div>
       </van-col>
