@@ -2,7 +2,7 @@
   <div class="home">
     <div class="head">
       <!-- 搜索栏 -->
-      <searchbar :showBgColor="showBgColor"  @changeshowBgColor='changeshowBgColor($event)'></searchbar>
+      <searchbar :showBgColor="showBgColor" @changeshowBgColor='changeshowBgColor($event)'></searchbar>
       <!-- <searchbar :showBgColor="showBgColor"></searchbar> -->
       <!-- 轮播图 -->
       <div class="swiper-wrapper-w">
@@ -36,15 +36,10 @@
 
   export default {
     computed: {},
-    mounted() {},
     data() {
       return {
         showBgColor: false,
-        sowing_list: [
-          'http://picasso.alicdn.com/imgextra/i3/357713/O1CNA1RtCyMq100e8223db2c0b1b2e8a000l_!!357713-0-picassobanner.jpg',
-          'http://gw.alicdn.com/imgextra/i1/174/O1CN01D1yNiN1D9jWqw3xQ4_!!174-0-lubanu.jpg',
-          'http://gw.alicdn.com/imgextra/i4/47/O1CN01mw51IB1CDZEJkAQMu_!!47-0-lubanu.jpg'
-        ], // 首页轮播图数据
+        sowing_list: [], // 首页轮播图数据
         flash_sale_product_list: [], // 限时抢购
         tabbar_all_product_list: [],
         specialZone: {}, // 特色专区数据
@@ -119,11 +114,18 @@
     },
     methods: {
       changeshowBgColor(val) {
-        // console.log('changeshowBgColor' + this.showBgColor + this._uid)
-        // console.log(this.$data.showBgColor)
-        // console.log(this)
         this.showBgColor = val
       }
+    },
+    mounted() {
+      //获取轮播图的数数据
+      this.$api.homeData.banner().then(
+      (
+        data
+      ) => {
+        this.sowing_list = data.data
+        console.log(this.sowing_list)
+      })
     }
   }
 </script>
@@ -132,9 +134,7 @@
   .swiper-wrapper-w {
     width: 95%;
     margin: auto;
-    height: 140px;
-    margin-bottom: 5px;
-    margin-top: 10px;
+    height: 170px;
     border-radius: 5px;
     overflow: hidden;
   }
@@ -145,6 +145,7 @@
 
   .head {
     width: 100%;
+    padding-bottom: 10px;
     background-image: url("http://518taole.7-orange.cn/backImage.png");
   }
 </style>

@@ -15,7 +15,7 @@ axios.defaults.headers['Content-Type'] = 'application/x-www-from-urlencoded'
  */
 
 axios.interceptors.response.use(
-	response => {
+	(response) => {
 		// 返回响应主体中的信息,例如知道服务器返回CODE值来知道成功还是失败
 		return response.data
 	},

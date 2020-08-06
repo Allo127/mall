@@ -4,7 +4,7 @@ const homeData = {
 	// 首页banner
 	async banner() {
 		return await axios
-			.get('books/banner')
+			.get('/mall/banner')
 	}
 }
 export default homeData

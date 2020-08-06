@@ -2,12 +2,15 @@
   <div class="swiper-wrapper">
     <van-swipe :autoplay="3000" indicator-color="#f60">
       <van-swipe-item v-for="(image, index) in sowing_list" :key="index">
-        <img v-lazy="image" />
+        <img v-lazy="rootUrl + image.carousel_url" />
       </van-swipe-item>
     </van-swipe>
   </div>
 </template>
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
     props: {
       // 接受父组件传过来的数据
@@ -18,13 +21,10 @@
         images: [] //banner 轮播图
       }
     },
-    created() {
-      // this.$api.homeData.banner().then(({ data: { banner } }) => {
-      //   this.images = banner;
-      // });
-    },
-    mounted() {
-      console.log(this.sowing_list)
+    created() {},
+    mounted() {},
+    computed: {
+      ...mapState(['rootUrl'])
     }
   }
 </script>
@@ -32,6 +32,7 @@
   .swiper-wrapper {
     img {
       width: 100%;
+      height: 170px;
     }
   }
 </style>
