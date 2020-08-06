@@ -7,7 +7,7 @@
 			<van-grid-item v-for="(item,index) in Data" :key="index" :text="item.category_name">
 				<div slot="icon">
 					<router-link :to="{ name: 'proList', params: { cid: item.category_id }}">
-						<img class="icon-img" :src="item.carousel_small" :alt="item.category_name">
+						<img class="icon-img" :src="'http://39.102.38.113:8088/'+item.carousel_small" :alt="item.category_name">
 					</router-link>
 				</div>
 			</van-grid-item>

@@ -1,6 +1,6 @@
 <template>
 	<div class="server">
-		<van-nav-bar title="服务中心" left-text="返回" left-arrow />
+		<van-nav-bar title="服务中心" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="talk">
 			<div class="img">
 				<van-image width="50" height="50" :src="require('../../images/icon/kefu.png')" />
@@ -13,10 +13,12 @@
 		</div>
 		<p>问题分类</p>
 		<div class="van-doc-demo-block__card question">
-			<div role="button" tabindex="0" class="van-cell van-cell--clickable">
-				<div class="van-cell__title"><span>常见问题</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
-					<!----></i>
-			</div>
+			<router-link :to="{ name: 'quesInfo'}">
+				<div role="button" tabindex="0" class="van-cell van-cell--clickable">
+					<div class="van-cell__title"><span>常见问题</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
+						<!----></i>
+				</div>
+			</router-link>
 			<div role="button" tabindex="0" class="van-cell van-cell--clickable">
 				<div class="van-cell__title"><span>配送问题</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
 					<!----></i>
@@ -28,7 +30,8 @@
 			<div role="button" tabindex="0" class="van-cell van-cell--clickable">
 				<div class="van-cell__title"><span>支付问题</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
 					<!----></i>
-			</div><div role="button" tabindex="0" class="van-cell van-cell--clickable">
+			</div>
+			<div role="button" tabindex="0" class="van-cell van-cell--clickable">
 				<div class="van-cell__title"><span> 其他问题</span></div><i class="van-icon van-icon-arrow van-cell__right-icon">
 					<!----></i>
 			</div>
@@ -70,10 +73,12 @@
 		margin-top: 8px;
 		font-size: 14px;
 	}
-	p{
+
+	p {
 		margin-left: 5px;
 	}
-	.question{
+
+	.server .question {
 		margin-top: 20px;
 		font-size: 14px;
 	}

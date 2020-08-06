@@ -1,30 +1,30 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home/index.vue'
-import Category from '../views/Category/index.vue'
-import Cart from '../views/Cart/cart.vue'
-import Me from '../views/Me/index.vue'
-import Address from '../views/address/Address.vue'
-import AddressAdd from '../views/address/AddressAdd.vue'
-import AddressEdit from '../views/address/AddressEdit.vue'
-import server from '../views/SystemSet/server.vue'
-import quesInfo from '../views/SystemSet/quesInfo.vue'
-import proList from '../views/proList/index.vue'
-import aboutUs from '../views/SystemSet/aboutUs.vue'
-import version from '../views/SystemSet/version.vue'
-import advice from '../views/SystemSet/pushAdvice.vue'
-import Search from '../views/Search/Search.vue'
-import topPro from '../views/proList/topWelPro.vue'
-import goodTopic from '../views/proList/goodTopic.vue'
-import Topic from '../views/proList/topic.vue'
-import proD from '../views/Detail/goodsDetail.vue'
-import Order from '../views/Order/Order.vue'
-import Set from '../views/Set/Set.vue'
-import submitOrder from '../views/Order/base/SubmitOrder.vue'
-import orderPay from '../views/Order/base/OrderPay.vue'
-import paySuccess from '../views/Order/base/PaySuccess.vue'
-import Login from '../views/Login/Login.vue'
-import Register from '../views/Login/Register.vue'
+import Home from '../views/Home/index.vue'// 首页
+import Category from '../views/Category/index.vue' //分类
+import Cart from '../views/Cart/cart.vue' // 购物车
+import Me from '../views/Me/index.vue'// 我的界面
+import Address from '../views/address/Address.vue' // 所有地址
+import AddressAdd from '../views/address/AddressAdd.vue' // 添加地址
+import AddressEdit from '../views/address/AddressEdit.vue' // 编辑地址
+import server from '../views/SystemSet/server.vue' // 服务中心
+import quesInfo from '../views/SystemSet/quesInfo.vue' // 常见问题
+import proList from '../views/proList/index.vue' // 点击某个具体分类的界面
+import aboutUs from '../views/SystemSet/aboutUs.vue' // 关于我们
+import version from '../views/SystemSet/version.vue' // 版本介绍
+import advice from '../views/SystemSet/pushAdvice.vue' // 问题反馈
+import Search from '../views/Search/Search.vue'// 搜索
+import topPro from '../views/proList/topWelPro.vue' // 人气推荐
+import goodTopic from '../views/proList/goodTopic.vue' // 所有主题界面
+import Topic from '../views/proList/topic.vue' // 某一个具体的主题界面
+import proD from '../views/Detail/goodsDetail.vue' // 商品详情
+import Order from '../views/Order/Order.vue'// 我的订单列表
+import Set from '../views/Set/Set.vue'// 设置
+import submitOrder from '../views/Order/base/SubmitOrder.vue'// 提交订单
+import orderPay from '../views/Order/base/OrderPay.vue'// 支付订单
+import paySuccess from '../views/Order/base/PaySuccess.vue'// 支付成功
+import Login from '../views/Login/Login.vue'// 登录
+import Register from '../views/Login/Register.vue'// 注册
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',

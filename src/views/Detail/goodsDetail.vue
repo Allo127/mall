@@ -8,10 +8,10 @@
 		<div class="goodSwipe">
 			<van-swipe :autoplay="3000" @change="onChange">
 				<van-swipe-item>
-					<img :src="goodsInfo.goods_cover_img" />
+					<img :src="'http://39.102.38.113:8088/'+goodsInfo.goods_cover_img" />
 				</van-swipe-item>
 				<van-swipe-item>
-					<img v-lazy="goodsInfo.goods_carousel" />
+					<img v-lazy="'http://39.102.38.113:8088/'+goodsInfo.goods_carousel" />
 				</van-swipe-item>
 				<template #indicator>
 					<div class="custom-indicator">{{ current + 1 }}/2</div>

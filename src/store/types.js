@@ -9,6 +9,8 @@ export const POIPRO_DATA = 'POIPRO_DATA' //按价格
 export const ALLPRO_DATA_C = 'ALLPRO_DATA_C' //分类综合排序
 export const NUMPRO_DATA_C = 'NUMPRO_DATA_C' //分类按销量
 export const POIPRO_DATA_C = 'POIPRO_DATA_C' //分类按价格
+//============订单数据=====================
+export const SET_CONFIRM_ORDER_INFO = 'SET_CONFIRM_ORDER_INFO'
 //=================地址部分开始==========================
 // 收货地址列表
 export const ADDRESS_LIST = "ADDRESS_LIST"
