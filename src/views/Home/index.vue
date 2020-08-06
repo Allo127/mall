@@ -2,7 +2,7 @@
   <div class="home">
     <div class="head">
       <!-- 搜索栏 -->
-      <searchbar :showBgColor="showBgColor" @changeshowBgColor='changeshowBgColor($event)'></searchbar>
+      <searchbar :showBgColor="showBgColor"  @changeshowBgColor='changeshowBgColor($event)'></searchbar>
       <!-- <searchbar :showBgColor="showBgColor"></searchbar> -->
       <!-- 轮播图 -->
       <div class="swiper-wrapper-w">
