@@ -59,7 +59,11 @@
         })
       })
     },
-    methods: {}
+    methods: {
+      goSearch() {
+        this.$router.push("/Search")
+      }
+    }
   }
 </script>
 

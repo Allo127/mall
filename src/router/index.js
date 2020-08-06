@@ -13,7 +13,7 @@ import proList from '../views/proList/index.vue'
 import aboutUs from '../views/SystemSet/aboutUs.vue'
 import version from '../views/SystemSet/version.vue'
 import advice from '../views/SystemSet/pushAdvice.vue'
-import searchbar from '../components/SearchBar.vue'
+import Search from '../views/Search/Search.vue'
 import topPro from '../views/proList/topWelPro.vue'
 import goodTopic from '../views/proList/goodTopic.vue'
 import Topic from '../views/proList/topic.vue'
@@ -31,7 +31,7 @@ const routes = [{
 	{
 		path: '/Search',
 		name: 'Search',
-		component: searchbar
+		component: Search
 	},
 	{
 		path: '/Home',
