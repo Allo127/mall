@@ -4,7 +4,7 @@ import router from './router'
 import store from './store'
 import flexible from 'lib-flexible'
 import api from './api/index.js'
-
+import Cookies from "js-cookie"
 import {
 	ActionSheet,
 	AddressEdit,
@@ -18,7 +18,7 @@ import {
 	CheckboxGroup,
 	Divider,
 	Field,
-  Loading,
+	Loading,
 	Grid,
 	GridItem,
 	GoodsAction,
@@ -52,7 +52,14 @@ import {
   CountDown,
   Progress,
   List,
-  Panel
+  Panel,
+  ContactCard,
+  CellGroup,
+  Popup,
+  CouponCell,
+  CouponList,
+  NumberKeyboard,
+  PasswordInput
 } from 'vant'
 
 Vue.use(flexible).use(Tabbar).use(TabbarItem).use(SwipeItem).use(Swipe).use(Lazyload).use(Sticky).use(AddressEdit).use(
@@ -60,11 +67,12 @@ Vue.use(flexible).use(Tabbar).use(TabbarItem).use(SwipeItem).use(Swipe).use(Lazy
 	NavBar).use(Button).use(Toast).use(Image).use(ImagePreview).use(Tag).use(Divider).use(GoodsAction).use(
 	GoodsActionIcon).use(GoodsActionButton).use(Sku).use(Tab).use(Tabs).use(Card).use(Field).use(ActionSheet).use(Cell).use(
 	Checkbox).use(CheckboxGroup).use(SwipeCell).use(SwitchCell).use(Step).use(Steps).use(Stepper).use(SubmitBar).use(
-	CountDown).use(Loading).use(Progress).use(List).use(Panel)
+	CountDown).use(Loading).use(Progress).use(List).use(Panel).use(ContactCard).use(CellGroup).use(Popup).use(CouponCell).use(CouponList).use(NumberKeyboard).use(PasswordInput)
 
 Vue.config.productionTip = false
 
 Vue.prototype.$api = api
+Vue.prototype.$Cookies = Cookies
 
 new Vue({
 	router,

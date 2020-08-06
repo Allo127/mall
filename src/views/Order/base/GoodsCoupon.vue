@@ -26,30 +26,30 @@ const coupon = {
   endAt: 1514592000,
   valueDesc: "1.5",
   unitDesc: "元"
-};
+}
 export default {
   data() {
     return {
       chosenCoupon: -1,
       coupons: [coupon],
       disabledCoupons: [coupon],
-      showList:false
-    };
+      showList: false
+    }
   },
   methods: {
     onChange(index) {
-      this.showList = false;
-      this.chosenCoupon = index;
+      this.showList = false
+      this.chosenCoupon = index
     },
     onExchange(code) {
-      this.coupons.push(coupon);
+      this.coupons.push(coupon)
       console.log(code)
     },
-    handleShowList(){
-       this.showList = true;
-    },
+    handleShowList() {
+       this.showList = true
+    }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

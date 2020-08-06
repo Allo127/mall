@@ -19,6 +19,10 @@ import goodTopic from '../views/proList/goodTopic.vue'
 import Topic from '../views/proList/topic.vue'
 import proD from '../views/Detail/goodsDetail.vue'
 import Order from '../views/Order/Order.vue'
+import Set from '../views/Set/Set.vue'
+import submitOrder from '../views/Order/base/SubmitOrder.vue'
+import orderPay from '../views/Order/base/OrderPay.vue'
+import paySuccess from '../views/Order/base/PaySuccess.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -122,6 +126,30 @@ const routes = [{
     //   const isLogin = localStorage.getItem("isLogin")
     //   isLogin ? next() : next("/login")
     // }
+  },
+  {
+    path: "/Set",
+    name: "Set",
+    component: Set
+    // beforeEnter: (to, from, next) => {
+    //   const isLogin = localStorage.getItem("isLogin")
+    //   isLogin ? next() : next("/login")
+    // }
+  },
+  {
+    path: "/submitOrder",
+    name: "submitOrder",
+    component: submitOrder
+  },
+  {
+    path: "/orderPay",
+    name: "orderPay",
+    component: orderPay
+  },
+  {
+    path: "/paySuccess",
+    name: "paySuccess",
+    component: paySuccess
   }
 ]
 

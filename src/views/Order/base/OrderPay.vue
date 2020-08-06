@@ -40,7 +40,6 @@
       <div class="pay-btn">
           <van-button type="primary" color="rgb(250, 67, 106)" block @click="onPay">确认支付</van-button>
       </div>
-      
     </div>
     <!-- 弹出支付输入密码框 -->
     <van-popup v-model="showPassWord" position="bottom" :style="{ height: '50%' }">
@@ -75,25 +74,25 @@ export default {
       showPassWord: false, // 密码输入框
       value: "", //密码值
       showKeyboard: true //输入键盘
-    };
+    }
   },
   methods: {
     // 路由返回
     onBack() {
-      this.$router.back();
+      this.$router.back()
     },
     //确认支付
     onPay() {
-      this.showPassWord = !this.showPassWord;
-      this.value = ""; //初始化密码输入框
+      this.showPassWord = !this.showPassWord
+      this.value = "" //初始化密码输入框
     },
     // 密码输入框
     onInput(key) {
-      this.value = (this.value + key).slice(0, 6);
+      this.value = (this.value + key).slice(0, 6)
     },
     // 清除密码输错
     onDelete() {
-      this.value = this.value.slice(0, this.value.length - 1);
+      this.value = this.value.slice(0, this.value.length - 1)
     },
     //输入完成
     onConfirm() {
@@ -101,24 +100,24 @@ export default {
         message: "加载中...",
         forbidClick: true,
         loadingType: "spinner"
-      });
+      })
       setTimeout(() => {
         //   密码输入正确要做的事情
-        if (this.value == "123456") {
-          this.showPassWord = !this.showPassWord;
-          this.$toast.clear();
-          this.$router.push("/pay-success");
-          //   this.$toast.success('支付成功');
+        if (this.value === "123456") {
+          this.showPassWord = !this.showPassWord
+          this.$toast.clear()
+          this.$router.push("/paySuccess")
+          //   this.$toast.success('支付成功')
         } else {
           //   密码输入错误要做的事情
-          this.showPassWord = !this.showPassWord;
-          this.$toast.clear();
-          this.$toast.fail("密码输入错误");
+          this.showPassWord = !this.showPassWord
+          this.$toast.clear()
+          this.$toast.fail("密码输入错误")
         }
-      }, 1000);
+      }, 1000)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
