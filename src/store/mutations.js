@@ -13,7 +13,9 @@ import {
 	POIPRO_DATA,
 	ALLPRO_DATA_C,
 	NUMPRO_DATA_C,
-	POIPRO_DATA_C
+	POIPRO_DATA_C,
+	//订单
+	SET_CONFIRM_ORDER_INFO
 } from './types.js'
 export default {
 	[SET_BANNER_IMAGES](state, images) {
@@ -51,6 +53,10 @@ export default {
 	[POIPRO_DATA_C](state, data) {
 		state.proListByPriC = data
 		localStorage.setItem('proListByPriC', JSON.stringify(data))
+	},
+	//订单数据
+	[SET_CONFIRM_ORDER_INFO](state, data) {
+		state.order = data
 	},
 	// 收货地址列表
 	[ADDRESS_LIST](state, data) {

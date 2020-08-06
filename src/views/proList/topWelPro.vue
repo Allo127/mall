@@ -1,6 +1,6 @@
 <template>
 	<div class="topWel">
-		<van-nav-bar title="人气推荐" left-text="返回" left-arrow />
+		<van-nav-bar title="人气推荐" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="bg">
 			<img class="img1" src="../../images/icon/bg.jpg">
 		</div>

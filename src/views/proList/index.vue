@@ -1,7 +1,7 @@
 <template>
 	<div class="proList">
 		<div class="top">
-			<van-icon name="arrow-left" class="icon" />
+			<van-icon name="arrow-left" class="icon" @click-left="onClickLeft" />
 			<!-- 搜索框 -->
 			<van-sticky class="search">
 				<van-search @focus="goSearch" input-align="center" shape="round" placeholder="请输入搜索关键词" v-model="Searchvalue" />

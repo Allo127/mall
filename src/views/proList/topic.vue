@@ -1,6 +1,6 @@
 <template>
 	<div class="topic">
-		<van-nav-bar :title="list.theme_name" left-text="返回" left-arrow />
+		<van-nav-bar :title="list.theme_name" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="content">
 			<img :src="list.theme_pic" :alt="list.theme_name" class="topicImg">
 			<div class="card2">

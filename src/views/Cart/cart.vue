@@ -26,13 +26,16 @@
 							<div class="list-cart">
 								<!-- 统计信息、管理 -->
 								<div class="header">
-									<p>共{{shopCartList.length}}件商品</p>
+									<!-- <p>共{{shopCartList.length}}件商品</p> -->
+									<p>共{{num}}件商品</p>
 									<p @click="showManage">{{isShowManage?'完成':'管理'}}</p>
 								</div>
 								<!-- 商品列表 -->
 								<div class="shopList">
 									<ul>
 										<li v-for="(item, index) in shopCartList" :key="index">
+											<!-- 修改后 -->
+											<!-- <van-checkbox v-model="item.checked" @click="chooseChange(item.cart_item_id)"></van-checkbox> -->
 											<van-checkbox v-model="item.checked"></van-checkbox>
 											<div class="goodLeft">
 												<img :src="item.goods_info[0].goods_cover_img" alt />
@@ -54,23 +57,22 @@
 					</BScroll>
 					<!-- 结算订单 -->
 					<van-submit-bar v-if="!isShowManage" :price="totalPrice" button-text="去结算" @submit="goConfirmOrder">
-						<van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
+						<van-checkbox v-model="checkedAll" @click="checkAll">全选</van-checkbox>
 					</van-submit-bar>
 					<!-- 删除购物车商品 -->
 					<van-submit-bar v-else :price="0" label="删除" button-text="删除" @submit="_delCartGoods">
-						<van-checkbox v-model="checked" @click="checkAll">全选</van-checkbox>
+						<van-checkbox v-model="checkedAll" @click="checkAll">全选</van-checkbox>
 					</van-submit-bar>
 				</div>
 				<loading :loadingStatus="loadingStatus" />
 			</div>
 		</div>
-		<!-- Tabbar -->
-		<Tabbar></Tabbar>
+		<menubar></menubar>
 	</div>
 </template>
 
 <script>
-	import Tabbar from '../../components/Tabbar.vue'
+	import menubar from '../../components/MenuBar.vue'
 	import Topbar from '../../components/Topbar.vue'
 	import BScroll from '../../components/BetterScroll.vue'
 	import Loading from '../../components/Loading.vue'
@@ -78,7 +80,7 @@
 
 	export default {
 		components: {
-			Tabbar,
+			menubar,
 			Topbar,
 			BScroll,
 			Loading
@@ -88,11 +90,14 @@
 			return {
 				result: [],
 				checked: false,
+				checkedAll: false,
 				shopCartList: [],
+				pronum: 0,
 				value: 1,
 				isShowManage: false, // 控制是否显示管理页面
 				uid: 1,
-				loadingStatus: false
+				loadingStatus: false,
+				selectedData: []
 			}
 		},
 		computed: {
@@ -100,6 +105,7 @@
 			totalPrice() {
 				let totalPrice = 0
 				this.shopCartList.forEach(item => {
+					console.log(item.checked)
 					if (item.checked) {
 						totalPrice += item.goods_info[0].selling_price * 100 * item.goods_count
 					}
@@ -109,47 +115,67 @@
 			// 计算选中商品数，判断是否已经全选
 			totalChecked() {
 				let totalChecked = 0
+
 				this.shopCartList.forEach(item => {
 					if (item.checked) {
 						totalChecked += 1
 					}
 				})
 				return totalChecked
+			},
+			num() {
+				let num = 0
+				this.shopCartList.forEach(item => {
+					if (item.checked) {
+						num += item.goods_count
+					}
+				})
+				return num
 			}
 		},
 		watch: {
 			// 判断是否全选
 			totalChecked(newValue) {
 				if (newValue === this.shopCartList.length) {
-					this.checked = true
+					this.checkedAll = true
 				} else {
-					this.checked = false
+					this.checkedAll = false
 				}
 			}
 		},
 		methods: {
 			// 转到结算界面
-			// goConfirmOrder() {
-			// 	const goods = this.getCheckGood()
-			// 	if (goods.length !== 0) {
-			// 		this.SET_CONFIRM_ORDER_INFO(goods)
-			// 		this.$router.push('ConfirmOrder')
-			// 	} else {
-			// 		this.$toast('未选中商品')
-			// 	}
-			// },
+			goConfirmOrder() {
+				const goods = this.getCheckGood()
+				if (goods.length !== 0) {
+					this.SET_CONFIRM_ORDER_INFO(goods)
+					this.$router.push('submitOrder')
+				} else {
+					this.$toast('未选中商品')
+				}
+			},
 			// 获取已经选中的商品
 			getCheckGood() {
 				return this.shopCartList.filter(val => val.checked === true)
 			},
 			// 全选与取消逻辑，通过遍历数组实现
 			checkAll() {
-				const cache = !this.checked
-				console.log(this.checked)
-				console.log(cache)
+				// this.shopCartList.forEach(item => {
+				// 	item.checked = this.checked
+				// 	console.log(item.checked)
+				// })
 				this.shopCartList.forEach(item => {
-					item.checked = cache
+					// console.log()
+					item.checked = this.checkedAll
+					console.log(item.checked)
 				})
+				// const cache = !this.checkedAll
+				// console.log(this.checkedAll)
+				// // console.log(cache)
+				// this.shopCartList.forEach(item => {
+				// 	item.checked = cache
+				// 	console.log(item.checked)
+				// })
 			},
 			// 获取购物车信息
 			async _getCartInfo() {
@@ -158,6 +184,9 @@
 				}) => {
 					console.log(data)
 					this.shopCartList = data
+					this.shopCartList.forEach(item => {
+						this.$set(item, "checked", false)
+					})
 				})
 			},
 			// 删除购物车商品

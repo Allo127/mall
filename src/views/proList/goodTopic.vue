@@ -1,6 +1,6 @@
 <template>
 	<div class="goodTopic">
-		<van-nav-bar title="优选推荐" left-text="返回" left-arrow />
+		<van-nav-bar title="优选推荐" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="content" v-for="(topitem,index) in list" :key="index">
 			<div class="card">
 				<router-link :to="{ name: 'Topic', params: { tid: topitem.theme_id}}">
