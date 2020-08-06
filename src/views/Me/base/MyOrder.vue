@@ -9,7 +9,7 @@
       </van-cell>
       <van-row type="flex" justify="space-between" align="center" class="order-list">
         <van-col v-for="(item,index) in orderData" :key="index" class="item">
-          <van-icon size="0.56rem" :class="item.icon" :info="item.info" />
+          <van-icon size="0.56rem" :name="item.icon" :info="item.info" />
           <span>{{item.name}}</span>
         </van-col>
       </van-row>
@@ -24,27 +24,27 @@ export default {
      orderData: [
        {
          name: "待付款",
-         icon: "iconfont icon-fukuan",
+         icon: "pending-payment",
          info: "1"
          },
        {
          name: "待发货",
-         icon: "iconfont icon-daifahuo1",
+         icon: "send-gift-o",
          info: "3"
          },
        {
          name: "待收货",
-         icon: "iconfont icon-daishouhuo",
+         icon: "logistics",
          info: "2"
          },
        {
          name: "评价",
-         icon: "iconfont icon-pingjia",
+         icon: "comment-o",
          info: "1"
          },
        {
          name: "退款/售后",
-         icon: "iconfont icon-icon1",
+         icon: "after-sale",
          info: ""
          }
      ]

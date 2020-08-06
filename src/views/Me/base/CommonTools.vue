@@ -10,7 +10,7 @@
       </van-cell>
       <van-row type="flex" justify="space-between" align="center" class="tools-list">
         <van-col span="6" v-for="(item,index) in toolsData" :key="index" class="item">
-          <van-icons ize="0.64rem" :class="item.icon" />
+          <van-icon size="0.64rem" :name="item.icon" />
           <span>{{item.name}}</span>
         </van-col>
       </van-row>
@@ -24,28 +24,28 @@ export default {
     return {
 	  toolsData: [{
 		  name: "免费领好礼",
-		  icon: "iconfont icon-libao"
+		  icon: "gift-o"
 	  },{
 		  name: "钱包",
-      icon: "iconfont icon-qianbao"
+      icon: "paid"
 	  },{
 		  name: "领卷中心",
-      icon: "iconfont icon-wodeyouhuijuan"
+      icon: "coupon-o"
 	  },{
 		  name: "客服服务",
-      icon: "iconfont icon-kefu"
+      icon: "service-o"
 	  },{
 		  name: "每日返现",
-      icon: "iconfont icon-50"
+      icon: "cash-back-record"
 	  },{
 		  name: "超值拼团",
-      icon: "iconfont icon-pintuangou"
+      icon: "friends-o"
 	  },{
       name: "闲置换钱",
-      icon: "iconfont icon-qian"
+      icon: "balance-o"
     },{
       name: "开发票",
-      icon: "iconfont icon-fapiao"
+      icon: "description"
     }]
     }
   }
