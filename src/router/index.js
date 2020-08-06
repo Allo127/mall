@@ -18,6 +18,7 @@ import topPro from '../views/proList/topWelPro.vue'
 import goodTopic from '../views/proList/goodTopic.vue'
 import Topic from '../views/proList/topic.vue'
 import proD from '../views/Detail/goodsDetail.vue'
+import Order from '../views/Order/Order.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -112,7 +113,16 @@ const routes = [{
 		path: '/proD',
 		name: 'proD',
 		component: proD
-	}
+	},
+  {
+    path: "/Order",
+    name: "Order",
+    component: Order
+    // beforeEnter: (to, from, next) => {
+    //   const isLogin = localStorage.getItem("isLogin")
+    //   isLogin ? next() : next("/login")
+    // }
+  }
 ]
 
 const router = new VueRouter({

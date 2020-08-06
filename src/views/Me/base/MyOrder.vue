@@ -8,7 +8,7 @@
         </template>
       </van-cell>
       <van-row type="flex" justify="space-between" align="center" class="order-list">
-        <van-col v-for="(item,index) in orderData" :key="index" class="item">
+        <van-col v-for="(item,index) in orderData" :key="index" class="item" @click="onMore">
           <van-icon size="0.56rem" :name="item.icon" :info="item.info" />
           <span>{{item.name}}</span>
         </van-col>
