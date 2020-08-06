@@ -38,7 +38,7 @@
 											<!-- <van-checkbox v-model="item.checked" @click="chooseChange(item.cart_item_id)"></van-checkbox> -->
 											<van-checkbox v-model="item.checked"></van-checkbox>
 											<div class="goodLeft">
-												<img :src="item.goods_info[0].goods_cover_img" alt />
+												<img :src="'http://39.102.38.113:8088/' + item.goods_info[0].goods_cover_img" alt />
 											</div>
 											<div class="goodRight">
 												<p>{{item.goods_info[0].goods_name}}</p>

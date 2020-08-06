@@ -1,6 +1,6 @@
 <template>
 	<div class="question">
-		<van-nav-bar title="常见问题" left-text="返回" left-arrow />
+		<van-nav-bar title="常见问题" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<h6>Q：交易下单过程中不能付款</h6>
 		<p>A：无法付款，可能是由以下原因导致，供您参考排查： </p>
 		<ol>
@@ -27,7 +27,8 @@
 	.question {
 		padding: 15px;
 	}
-	li{
+
+	li {
 		margin-top: 5px;
 	}
 </style>

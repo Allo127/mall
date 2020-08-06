@@ -1,6 +1,6 @@
 <template>
 	<div class="aboutUs">
-		<van-nav-bar title="关于我们" left-text="返回" left-arrow />
+		<van-nav-bar title="关于我们" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="content">
 			<div class="detail">
 				<img src="../../images/icon/us.png" alt="">

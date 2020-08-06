@@ -1,23 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home/index.vue'
-import Category from '../views/Category/index.vue'
-import Cart from '../views/Cart/cart.vue'
+import Category from '../views/Category/index.vue' //分类
+import Cart from '../views/Cart/cart.vue' //购物车
 import Me from '../views/Me/index.vue'
-import Address from '../views/address/Address.vue'
-import AddressAdd from '../views/address/AddressAdd.vue'
-import AddressEdit from '../views/address/AddressEdit.vue'
-import server from '../views/SystemSet/server.vue'
-import quesInfo from '../views/SystemSet/quesInfo.vue'
-import proList from '../views/proList/index.vue'
-import aboutUs from '../views/SystemSet/aboutUs.vue'
-import version from '../views/SystemSet/version.vue'
-import advice from '../views/SystemSet/pushAdvice.vue'
+import Address from '../views/address/Address.vue' //所有地址
+import AddressAdd from '../views/address/AddressAdd.vue' //添加地址
+import AddressEdit from '../views/address/AddressEdit.vue' //编辑地址
+import server from '../views/SystemSet/server.vue' //服务中心
+import quesInfo from '../views/SystemSet/quesInfo.vue' //常见问题
+import proList from '../views/proList/index.vue' //点击某个具体分类的界面
+import aboutUs from '../views/SystemSet/aboutUs.vue' //关于我们
+import version from '../views/SystemSet/version.vue' //版本介绍
+import advice from '../views/SystemSet/pushAdvice.vue' //问题反馈
 import Search from '../views/Search/Search.vue'
-import topPro from '../views/proList/topWelPro.vue'
-import goodTopic from '../views/proList/goodTopic.vue'
-import Topic from '../views/proList/topic.vue'
-import proD from '../views/Detail/goodsDetail.vue'
+import topPro from '../views/proList/topWelPro.vue' //人气推荐
+import goodTopic from '../views/proList/goodTopic.vue' //所有主题界面
+import Topic from '../views/proList/topic.vue' //某一个具体的主题界面
+import proD from '../views/Detail/goodsDetail.vue' //商品详情
 import Order from '../views/Order/Order.vue'
 import Set from '../views/Set/Set.vue'
 import submitOrder from '../views/Order/base/SubmitOrder.vue'
@@ -118,39 +118,39 @@ const routes = [{
 		name: 'proD',
 		component: proD
 	},
-  {
-    path: "/Order",
-    name: "Order",
-    component: Order
-    // beforeEnter: (to, from, next) => {
-    //   const isLogin = localStorage.getItem("isLogin")
-    //   isLogin ? next() : next("/login")
-    // }
-  },
-  {
-    path: "/Set",
-    name: "Set",
-    component: Set
-    // beforeEnter: (to, from, next) => {
-    //   const isLogin = localStorage.getItem("isLogin")
-    //   isLogin ? next() : next("/login")
-    // }
-  },
-  {
-    path: "/submitOrder",
-    name: "submitOrder",
-    component: submitOrder
-  },
-  {
-    path: "/orderPay",
-    name: "orderPay",
-    component: orderPay
-  },
-  {
-    path: "/paySuccess",
-    name: "paySuccess",
-    component: paySuccess
-  }
+	{
+		path: "/Order",
+		name: "Order",
+		component: Order
+		// beforeEnter: (to, from, next) => {
+		//   const isLogin = localStorage.getItem("isLogin")
+		//   isLogin ? next() : next("/login")
+		// }
+	},
+	{
+		path: "/Set",
+		name: "Set",
+		component: Set
+		// beforeEnter: (to, from, next) => {
+		//   const isLogin = localStorage.getItem("isLogin")
+		//   isLogin ? next() : next("/login")
+		// }
+	},
+	{
+		path: "/submitOrder",
+		name: "submitOrder",
+		component: submitOrder
+	},
+	{
+		path: "/orderPay",
+		name: "orderPay",
+		component: orderPay
+	},
+	{
+		path: "/paySuccess",
+		name: "paySuccess",
+		component: paySuccess
+	}
 ]
 
 const router = new VueRouter({

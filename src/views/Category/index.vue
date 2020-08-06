@@ -79,8 +79,8 @@
 					console.log(data)
 					this.CATAGOTY_DATA(data)
 					this.content = this.catagoryData[this.contentActive].children
-					this.img1 = this.catagoryData[this.contentActive].carousel_1
-					this.img2 = this.catagoryData[this.contentActive].carousel_2
+					this.img1 = "http://39.102.38.113:8088/" + this.catagoryData[this.contentActive].carousel_1
+					this.img2 = "http://39.102.38.113:8088/" + this.catagoryData[this.contentActive].carousel_2
 					// this.content = data[this.contentActive].children
 					// this.img1 = data[this.contentActive].carousel_1
 					// this.img2 = data[this.contentActive].carousel_2
@@ -100,13 +100,13 @@
 				})
 			},
 			goSearch() {
-				this.$router.push("/search")
+				this.$router.push("/Search")
 			},
 			change(index) {
 				this.contentActive = index
 				this.content = this.catagoryData[index].children
-				this.img1 = this.catagoryData[this.contentActive].carousel_1
-				this.img2 = this.catagoryData[this.contentActive].carousel_2
+				this.img1 = "http://39.102.38.113:8088/" + this.catagoryData[this.contentActive].carousel_1
+				this.img2 = "http://39.102.38.113:8088/" + this.catagoryData[this.contentActive].carousel_2
 			}
 		},
 		mounted() {

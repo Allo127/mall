@@ -1,6 +1,6 @@
 <template>
 	<div class="version">
-		<van-nav-bar title="版本说明" left-text="返回" left-arrow />
+		<van-nav-bar title="版本说明" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="pic">
 			<img src="../../images/icon/update.png" alt="">
 			<p>版本不息，优化不止</p>

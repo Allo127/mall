@@ -1,6 +1,6 @@
 <template>
 	<div class="advice">
-		<van-nav-bar title="意见反馈" left-text="返回" left-arrow />
+		<van-nav-bar title="意见反馈" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<div class="content">
 			<van-cell is-link title="选择反馈类型" @click="show = true" />
 			<van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
