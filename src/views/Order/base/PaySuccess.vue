@@ -22,39 +22,38 @@
       >返回首页</van-button>
     </div>
     <!-- 底部导航 -->
-    <footer-bar ref="footerbar"></footer-bar>
+    <MenuBar></MenuBar>
   </div>
 </template>
 
 <script>
-import FooterBar from "../../../components/FooterBar";
+import MenuBar from "../../../components/MenuBar.vue"
 export default {
   components: {
-    FooterBar
+    MenuBar
   },
   methods: {
     // 顶部导航返回上一页
     onBack() {
-      this.$router.back();
+      this.$router.back()
     },
     //返回首页
     goHome() {
-      this.$router.push("/");
+      this.$router.push("/")
     },
     // 查看订单
     CheckOrder() {
       this.$toast.loading({
         message: "加载中...",
         forbidClick: true
-      });
-      setTimeout(()=>{
+      })
+      setTimeout(() => {
         this.$toast.clear()
-        this.$router.push("/order");
+        this.$router.push("/order")
       },500)
-      
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

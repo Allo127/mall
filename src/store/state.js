@@ -1,4 +1,6 @@
 export default {
+  // 编辑收货人信息
+  editAddressInfo: {},
 	//分类数据
 	catagoryData: JSON.parse(localStorage.getItem('catagoryData')) || [],
 	//商品展示
@@ -16,8 +18,6 @@ export default {
 	order: [],
 	// 收货人地址列表
 	addressList: JSON.parse(localStorage.getItem('addressList')) || [],
-	// 编辑收货人信息
-	editAddressInfo: JSON.parse(localStorage.getItem('editAddressInfo')) || [],
 	// addressInfo: localStorage.setItem('addressInfo', JSON.stringify(addressInfo))
 	bannerImages: JSON.parse(localStorage.getItem('bannerImages')) || [
 		'https://aecpm.alicdn.com/simba/img/TB15tIjGVXXXXcoapXXSutbFXXX.jpg',

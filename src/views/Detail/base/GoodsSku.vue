@@ -130,7 +130,7 @@
 				})
 				setTimeout(() => {
 					this.$toast.clear()
-					this.$router.push("/cart/submit-order")
+					this.$router.push("/submitOrder")
 				}, 1000)
 			},
 			// 添加购物车

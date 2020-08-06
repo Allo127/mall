@@ -75,7 +75,7 @@
 			// 选择地址
 			select(item) {
 				this.$store.dispatch("editAddressInfo", item)
-				this.$router.push("/cart/submit-order")
+				this.$router.push("/submitOrder")
 			}
 		},
 		computed: {

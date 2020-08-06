@@ -13,11 +13,16 @@ import proList from '../views/proList/index.vue'
 import aboutUs from '../views/SystemSet/aboutUs.vue'
 import version from '../views/SystemSet/version.vue'
 import advice from '../views/SystemSet/pushAdvice.vue'
-import searchbar from '../components/SearchBar.vue'
+import Search from '../views/Search/Search.vue'
 import topPro from '../views/proList/topWelPro.vue'
 import goodTopic from '../views/proList/goodTopic.vue'
 import Topic from '../views/proList/topic.vue'
 import proD from '../views/Detail/goodsDetail.vue'
+import Order from '../views/Order/Order.vue'
+import Set from '../views/Set/Set.vue'
+import submitOrder from '../views/Order/base/SubmitOrder.vue'
+import orderPay from '../views/Order/base/OrderPay.vue'
+import paySuccess from '../views/Order/base/PaySuccess.vue'
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -26,7 +31,7 @@ const routes = [{
 	{
 		path: '/Search',
 		name: 'Search',
-		component: searchbar
+		component: Search
 	},
 	{
 		path: '/Home',
@@ -112,7 +117,40 @@ const routes = [{
 		path: '/proD',
 		name: 'proD',
 		component: proD
-	}
+	},
+  {
+    path: "/Order",
+    name: "Order",
+    component: Order
+    // beforeEnter: (to, from, next) => {
+    //   const isLogin = localStorage.getItem("isLogin")
+    //   isLogin ? next() : next("/login")
+    // }
+  },
+  {
+    path: "/Set",
+    name: "Set",
+    component: Set
+    // beforeEnter: (to, from, next) => {
+    //   const isLogin = localStorage.getItem("isLogin")
+    //   isLogin ? next() : next("/login")
+    // }
+  },
+  {
+    path: "/submitOrder",
+    name: "submitOrder",
+    component: submitOrder
+  },
+  {
+    path: "/orderPay",
+    name: "orderPay",
+    component: orderPay
+  },
+  {
+    path: "/paySuccess",
+    name: "paySuccess",
+    component: paySuccess
+  }
 ]
 
 const router = new VueRouter({

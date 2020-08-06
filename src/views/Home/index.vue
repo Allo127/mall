@@ -2,7 +2,8 @@
   <div class="home">
     <div class="head">
       <!-- 搜索栏 -->
-      <searchbar :showBgColor="true" @changeshowBgColor='changeshowBgColor($event)'></searchbar>
+      <searchbar :showBgColor="showBgColor" @changeshowBgColor='changeshowBgColor($event)'></searchbar>
+      <!-- <searchbar :showBgColor="showBgColor"></searchbar> -->
       <!-- 轮播图 -->
       <div class="swiper-wrapper-w">
         <sowing :sowing_list="sowing_list"></sowing>
@@ -12,9 +13,11 @@
     <iconnav :icons="icons"></iconnav>
     <!-- 秒杀 -->
     <spike></spike>
-<!--    这是首页1{{this.showBgColor}} -->
+    这是首页1{{showBgColor}}{{_uid}}
     <!-- 人气推荐 -->
     <popular></popular>
+    <!-- 优选推荐 -->
+    <wellgoods></wellgoods>
     <menubar></menubar>
   </div>
 </template>
@@ -26,14 +29,14 @@
   import iconnav from './base/IconNav.vue'
   import Spike from "./base/Spike"
   import popular from "./base/Popular.vue"
+  import wellgoods from "./base/WellGoods.vue"
   // import {
   //   mapState
   // } from 'vuex'
 
   export default {
     computed: {},
-    mounted: { // 创建完成时是
-    },
+    mounted() {},
     data() {
       return {
         showBgColor: false,
@@ -111,12 +114,15 @@
       sowing,
       iconnav,
       Spike,
-      popular
+      popular,
+      wellgoods
     },
     methods: {
       changeshowBgColor(val) {
+        // console.log('changeshowBgColor' + this.showBgColor + this._uid)
+        // console.log(this.$data.showBgColor)
+        // console.log(this)
         this.showBgColor = val
-        // console.log('changeshowBgColor' + this.showBgColor)
       }
     }
   }
@@ -132,9 +138,11 @@
     border-radius: 5px;
     overflow: hidden;
   }
-  .home{
+
+  .home {
     padding-bottom: 30px;
   }
+
   .head {
     width: 100%;
     background-image: url("http://518taole.7-orange.cn/backImage.png");
