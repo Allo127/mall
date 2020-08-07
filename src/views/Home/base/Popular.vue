@@ -10,34 +10,29 @@
         <span>极品生活</span>
         <span>日用之美好</span>
       </van-col>
-      <van-col class="more">
+      <van-col class="more" @click="()=>{this.$router.push('/topPro')}">
         <span>查看更多</span>
         <van-icon name="arrow" />
       </van-col>
     </van-row>
     <!-- 热门商品 -->
     <div class="hot-goods">
-      <van-row v-for="(item,index) in goodsList" :key="index" @click="goDetail" class="hot-goods-item m-b-10 bg-white">
+      <van-row v-for="(item,index) in goods" :key="index" @click="goDetail(item.goods_id)" class="hot-goods-item m-b-10 bg-white">
         <van-col :span="8">
-          <van-image lazy-load radius="3px" :src="item.pic" />
+          <van-image lazy-load radius="3px" :src="rootUrl + item.goods_carousel" />
         </van-col>
         <!-- 抢购商品信息 -->
         <van-col :span="16" class="goods-info">
-          <div class="van-ellipsis goods-title">{{item.title}}</div>
+          <div class="van-ellipsis goods-title">{{item.goods_name}}</div>
           <!-- 标题下面内容部分 -->
           <van-row type="flex" justify="space-between" align="center">
             <van-col :span="14">
               <div class="price">
-                <span>￥{{item.maxGroupPrice}}</span>
-                <s>￥{{item.marketPrice}}</s>
+                <span>￥{{item.selling_price}}</span>
+                <s>￥{{item.original_price}}</s>
               </div>
-              <van-progress
-                  color="#f2826a"
-                  stroke-width="7"
-                  pivot-text
-                  :percentage="item.percentage"
-              />
-              <div class="purchased">{{item.desc}}</div>
+              <van-progress color="#f2826a" stroke-width="7" pivot-text :percentage="item.stock_num / item.selling_num * 100 >100 ? 100 : item.stock_num / item.selling_num * 100" />
+              <div class="purchased">已抢购{{item.selling_num}}</div>
             </van-col>
             <van-col :span="10" class="buy-btn">
               <van-button round size="mini" color="#ff5500">立即抢购</van-button>
@@ -50,42 +45,32 @@
 </template>
 
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
+    props: {
+      // 接受父组件传过来的数据
+      goods: Array
+    },
     data() {
       return {
-        goodsList: [{
-            goodsId: 131,
-            title: "【法国男鞋 直降1800】海外名品 全新科技5D飞织潮流休闲鞋男鞋户外运动鞋轻质旅游鞋跑步鞋 米灰色-官方正版 39",
-            pic: "https://img30.360buyimg.com/mobilecms/s280x280_jfs/t1/114278/9/424/102046/5e8c86f6E93665a3f/1eae43511127041d.jpg",
-            marketPrice: "333.88",
-            maxGroupPrice: "99.00",
-            percentage: "78",
-            desc: "已抢购477件"
-          },
-          {
-            goodsId: 132,
-            title: "2019新款秋冬季连帽卫衣女韩版潮宽松女学生ins羊羔毛绒加绒加厚",
-            pic: "http://t00img.yangkeduo.com/goods/images/2018-09-09/cf5d55c606d95f18ecc0b3e73c0a9498.jpeg",
-            marketPrice: "198.00",
-            maxGroupPrice: "59.00",
-            percentage: "85",
-            desc: "已抢购675件"
-          },
-          {
-            goodsId: 133,
-            title: "峰米 激光电视4K Cinema 手机投影机 家用投影仪(含赠菲涅尔硬屏 4K超高清 护眼认证 小米视频源 64GB大存储)",
-            pic: "https://img12.360buyimg.com/mobilecms/s280x280_jfs/t1/87217/3/19558/187556/5e9ec525E5d441b6f/5b46bfa39113faa2.jpg.webp",
-            marketPrice: "896.00",
-            maxGroupPrice: "499.00",
-            percentage: "38",
-            desc: "已抢购149件"
-          }
-        ]
       }
     },
+    computed: {
+      ...mapState(['rootUrl'])
+    },
+    mounted() {
+      console.log(this.goods)
+    },
     methods: {
-      goDetail() {
-        this.$router.push("/detail?goods_id=52157500821")
+      goDetail(id) {
+        this.$router.push({
+          name: 'proD',
+          params: {
+            pid: id
+          }
+        })
       }
     }
   }
@@ -109,6 +94,7 @@
         margin-right: 5px;
       }
     }
+
     .more {
       color: #bbb;
       display: flex;

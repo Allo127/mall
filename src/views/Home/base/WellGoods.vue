@@ -6,7 +6,7 @@
         <van-icon name="gem" color="#ff5500" />
         <span>优选推荐</span>
       </van-col>
-      <van-col class="more">
+      <van-col class="more" @click="()=>{this.$router.push('/goodTopic')}">
         <span>查看更多</span>
         <van-icon name="arrow" />
       </van-col>
@@ -14,18 +14,18 @@
     <!-- 商品列表 -->
     <van-list v-model="loading" :finished="finished" finished-text="没有更多了" @load="onLoad">
       <van-row class="goods-list">
-        <van-col span="12" v-for="(item,index) in goodsData" :key="index" @click="goDetail(index)" class="goods-wrapper">
+        <van-col span="12" v-for="(item,index) in goods" :key="index" @click="goDetail(item.goods_id)" class="goods-wrapper">
           <div class="goods-item">
             <div class="goods-pic">
-              <img :src="item.hd_thumb_url" />
+              <img :src="rootUrl + item.goods_carousel"/>
             </div>
             <div class="goods-info">
               <div class="goods-title">{{item.goods_name}}</div>
               <div class="goods-price">
-                <span>￥{{item.price/100}}</span>
-                <s>￥{{item.quantity/100}}</s>
+                <span>￥{{item.selling_price}}</span>
+                <s>￥{{item.original_price}}</s>
               </div>
-              <div class="goods-num">{{item.sales_tip}}</div>
+              <div class="goods-num">已拼{{item.selling_num}}件</div>
               <!-- 下单图标 -->
               <div class="buy-icon">
                 <van-icon name="cart-o" color="#fff" size=".5rem" />
@@ -39,69 +39,59 @@
 </template>
 
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
     props: {
       isTitle: {
         type: Boolean,
         default: true
-      }
+      },
+       goods: Array
     },
     data() {
       return {
         loading: false,
-        finished: false,
-        goodsData: [{
-          hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-          goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-          price: 560,
-          quantity: 2900,
-          sales_tip: "已拼10万+件"
-        }, {
-          hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-          goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-          price: 560,
-          quantity: 2900,
-          sales_tip: "已拼10万+件"
-        }, {
-          hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-          goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-          price: 560,
-          quantity: 2900,
-          sales_tip: "已拼10万+件"
-        }, {
-          hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-          goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-          price: 560,
-          quantity: 2900,
-          sales_tip: "已拼10万+件"
-        }]
+        finished: false
       }
     },
+    computed: {
+      ...mapState(['rootUrl'])
+    },
     created() {
-      // this.getLikeGoodsData()
+      this.goods.pop()
     },
     methods: {
       // 商品上拉刷新
-      onLoad() {
-        setTimeout(() => {
-          this.goodsData.push({
-            hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-            goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-            price: 560,
-            quantity: 2900,
-            sales_tip: "已拼10万+件"
-          }, {
-            hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
-            goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
-            price: 560,
-            quantity: 2900,
-            sales_tip: "已拼10万+件"
-          })
-          this.loading = false
-          if (this.goodsData.length > 30) {
-            this.finished = true
+      // onLoad() {
+      //   setTimeout(() => {
+      //     this.goods.push({
+      //       hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
+      //       goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
+      //       price: 560,
+      //       quantity: 2900,
+      //       sales_tip: "已拼10万+件"
+      //     }, {
+      //       hd_thumb_url: "//t00img.yangkeduo.com/goods/images/2019-11-13/b1866ac62daa9ecec6be25cef8252f2b.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/312/q/70/format/webp",
+      //       goods_name: "指纹感应多样电子防风个性充电式diy打火机充电创意 点烟器多功能",
+      //       price: 560,
+      //       quantity: 2900,
+      //       sales_tip: "已拼10万+件"
+      //     })
+      //     this.loading = false
+      //     if (this.goodsData.length > 30) {
+      //       this.finished = true
+      //     }
+      //   }, 2000)
+      // },
+      goDetail(id) {
+        this.$router.push({
+          name: 'proD',
+          params: {
+            pid: id
           }
-        }, 2000)
+        })
       }
       // 请求获取商品数据
       // getLikeGoodsData() {
@@ -198,6 +188,7 @@
               overflow: hidden;
               text-overflow: ellipsis;
               display: -webkit-box;
+              height: 50px;
               -webkit-line-clamp: 2;
               -webkit-box-orient: vertical;
             }
