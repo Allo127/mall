@@ -218,6 +218,7 @@
 		},
 		created() {
 			// if (this.userToken) {
+			this.uid = localStorage.getItem('userId')
 			this._getCartInfo()
 			this.checked = false
 			// } else {
@@ -233,6 +234,7 @@
 		right: 0;
 		top: 38px;
 		bottom: 90px;
+		background-color: #FFFFFF;
 
 		.content-scroll {
 			height: 100%;
@@ -283,7 +285,6 @@
 		li {
 			display: flex;
 			padding: 2px;
-			background-color: #FFFFFF;
 
 			.goodLeft {
 				margin: 0 5px;

@@ -56,6 +56,9 @@
 				let lastUuid = 0
 				return (new Date()).getTime() * 1000 + (lastUuid++) % 1000
 			}
+		},
+		mounted() {
+			this.user_id = localStorage.getItem('userId')
 		}
 	}
 </script>

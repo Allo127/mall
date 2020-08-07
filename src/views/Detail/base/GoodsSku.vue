@@ -151,6 +151,9 @@
 					this.showSku = false
 				}, 1000)
 			}
+		},
+		mounted() {
+			this.uid = localStorage.getItem('userId')
 		}
 	}
 </script>

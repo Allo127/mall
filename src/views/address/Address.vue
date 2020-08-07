@@ -95,6 +95,7 @@
 			...mapState(["chooseAddress"])
 		},
 		mounted() {
+			this.uid = localStorage.getItem('userId')
 			this.getAddressList()
 		}
 	}
