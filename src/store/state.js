@@ -19,7 +19,7 @@ export default {
 	// 收货人地址列表
 	addressList: JSON.parse(localStorage.getItem('addressList')) || [],
 	// addressInfo: JSON.parse(localStorage.getItem('addressInfo')) || [],
-	chooseAddress: JSON.parse(localStorage.getItem('chooseAddress')) || [],
+	chooseAddress: JSON.parse(localStorage.getItem('chooseAddress')) || {},
 	rootUrl: 'http://39.102.38.113:8088/',
 	// 登录状态
 	isLogin: Boolean(localStorage.getItem('isLogin')) || false,
@@ -35,5 +35,7 @@ export default {
   //订单界面状态
   orderViewKey: 0,
   //订单界面当前的订单
-  userOderListNow: []
+  userOderListNow: [],
+  // 提交订单界面
+  totalPrice: 0
 }

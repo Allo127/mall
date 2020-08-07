@@ -91,7 +91,7 @@ export default {
 	},
 	//选择地址
 	[CHOOSE_ADDRESS](state, data) {
-		state.chooseAdress = data
+		state.chooseAddress = data
 	},
 	// 修改联系人地址
 	[SAVE_CHANGE_DETAIL](state, item) {
@@ -170,5 +170,9 @@ export default {
   //改变订单界面状态
   changeViewkey(state, key) {
     state.orderViewKey = key
+  },
+  //改总价
+  changeTotalPrice(state, val) {
+    state.totalPrice = val
   }
 }
