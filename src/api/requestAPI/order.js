@@ -1,10 +1,14 @@
 import axios from '../http.js'
 
-const homeData = {
+const order = {
 	// 首页banner
-	async banner() {
+	async subimitOrder(list) {
+    var data = JSON.stringify({
+        user_id: parseInt(localStorage.getItem('userId')),
+        cart_item_id: list
+    })
 		return await axios
-			.get('/mall/banner')
+			.post('/cart/addorder/',data)
 	}
 }
-export default homeData
+export default order

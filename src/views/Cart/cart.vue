@@ -114,6 +114,7 @@
 						totalPrice += item.goods_info[0].selling_price * 100 * item.goods_count
 					}
 				})
+        this.changeTotalPrice(totalPrice / 100)
 				return totalPrice
 			},
 			// 计算选中商品数，判断是否已经全选
@@ -148,7 +149,7 @@
 			}
 		},
 		methods: {
-			...mapMutations(['SET_CONFIRM_ORDER_INFO']),
+			...mapMutations(['SET_CONFIRM_ORDER_INFO','changeTotalPrice']),
 			// 转到结算界面
 			goConfirmOrder() {
 				const goods = this.getCheckGood()
