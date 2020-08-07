@@ -28,5 +28,11 @@ export default {
   userAccount: localStorage.getItem('userAccount') || '', // 用户账号
   userSex: localStorage.getItem('userSex') || '', // 用户性别
   userBirthday: localStorage.getItem('userBirthday') || '' ,//用户生日
-  userIntroduce: localStorage.getItem('userIntroduce') || '' //用户签名
+  userIntroduce: localStorage.getItem('userIntroduce') || '' ,//用户签名
+  // 用户所有订单
+  userOderList: JSON.parse(localStorage.getItem('userOderList')) || [],
+  //订单界面状态
+  orderViewKey: 0,
+  //订单界面当前的订单
+  userOderListNow: []
 }

@@ -1,13 +1,14 @@
 <template>
   <div class="order-card">
-    <van-panel title="订单号：T20191203" status="已完成" class="m-b-10 b-r-10" v-for="(item,index) in 2" :key="index">
+    <van-panel :title="'订单号' + item.order_no" :status="item.pay_status === 5 ? '已完成': item.pay_status === 1 ? '待付款' : item.pay_status === 2 ? '待发货':item.pay_status === 3 ? '待收货' :item.pay_status === 4 ? '待评价' : '售后' "
+      class="m-b-10 b-r-10" v-for="(item,index) in orderList" :key="index">
       <div class="content">
-        <van-card class="bg-white" num="2" price="35.9" desc="黑色/38码" title="【真兔毛】加绒厚底内增高短筒雪地靴毛毛短靴女冬季新款棉鞋2019" thumb="http://t00img.yangkeduo.com/goods/images/2018-10-16/26c747c3d63bb5e2a545e821856d2cd4.jpeg?imageMogr2/sharpen/1%7CimageView2/2/w/300/q/70/format/webp"
-          v-for="(item,index) in 2" :key="index" />
+        <van-card class="bg-white" :num="good.goods_count" :price="good.selling_price" desc="黑色" :title="good.goods_name"
+          :thumb="rootUrl + good.goods_cover_img" v-for="(good,index) in item.goodsList" :key="index" />
       </div>
       <div slot="footer" class="footer">
         <div class="info">
-          <div class="total">共4件商品合计：￥123.1.00</div>
+          <div class="total">共{{item.goodsList.length}}件商品合计：￥{{item.total_price}}</div>
           <div class="btn">
             <van-button plain size="mini" round>查看发票</van-button>
             <van-button plain size="mini" round type="danger">评价晒单</van-button>
@@ -20,7 +21,16 @@
 </template>
 
 <script>
-  export default {}
+  import {
+    mapState,
+    mapGetters
+  } from 'vuex'
+  export default {
+    computed: {
+      ...mapState(['rootUrl']),
+      ...mapGetters(['orderList'])
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

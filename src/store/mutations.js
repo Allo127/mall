@@ -26,7 +26,9 @@ import {
   SET_USER_BRITHDAY,
   SET_USER_INTRODUCE,
   //退出登录
-  LOGIN_OUT
+  LOGIN_OUT,
+  //设置用户订单列表
+  SET_USER_ORDER_LIST
 } from './types.js'
 export default {
   [SET_BANNER_IMAGES](state, images) {
@@ -128,6 +130,7 @@ export default {
     state.userIntroduce = val
     localStorage.setItem('userIntroduce', val)
   },
+  // 退出登录
   [LOGIN_OUT](state) {
     // 登录状态
     state.isLogin = false
@@ -150,5 +153,14 @@ export default {
     // 签名
     state.userIntroduce = ""
     localStorage.setItem('userIntroduce', "")
+  },
+  // 设置用户订单列表
+  [SET_USER_ORDER_LIST](state, data) {
+    state.userOderList = data
+    localStorage.setItem('userOderList', JSON.stringify(data))
+  },
+  //改变订单界面状态
+  changeViewkey(state, key) {
+    state.orderViewKey = key
   }
 }

@@ -6,7 +6,7 @@
     </van-sticky>
     <!-- 订单tabs选项卡 -->
     <van-tabs v-model="active" animated :sticky="true" :offset-top="offsetTop" ellipsis swipeable lazy-render
-      :swipe-threshold="6">
+      :swipe-threshold="6" @click="changeList">
       <!-- 全部订单 -->
       <van-tab title="全部">
         <order-card></order-card>
@@ -24,14 +24,24 @@
       <van-tab title="待评价">
         <order-card></order-card>
       </van-tab>
-      <van-tab title="售后">暂无售后订单</van-tab>
+      <van-tab title="售后">
+        <order-card></order-card>
+      </van-tab>
     </van-tabs>
   </div>
 </template>
 
 <script>
+  import {
+    mapActions
+  } from 'vuex'
   import OrderCard from "./base/OrderCard"
   export default {
+    mounted() {
+      this.offsetTop = this.$refs.navbar.offsetHeight
+      // 获取用户订单列表
+      this.getOrderlist(parseInt(localStorage.getItem('userId')))
+    },
     components: {
       OrderCard
     },
@@ -41,13 +51,15 @@
         offsetTop: null
       }
     },
-    mounted() {
-      this.offsetTop = this.$refs.navbar.offsetHeight
-    },
     methods: {
+      ...mapActions(['getOrderlist']),
       // 路由返回
       back() {
         this.$router.back()
+      },
+      changeList(tid, title) {
+        console.log(tid)
+        this.$store.commit('changeViewkey', tid)
       }
     }
   }
