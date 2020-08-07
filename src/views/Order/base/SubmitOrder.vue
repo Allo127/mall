@@ -75,7 +75,7 @@
       }
     },
     computed: {
-      ...mapState(["editAddressInfo"])
+      ...mapState(["editAddressInfo", "order"])
     }
   }
 </script>

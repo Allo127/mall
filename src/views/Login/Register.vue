@@ -96,6 +96,7 @@
       },
       // 初始化用户数据
       initUserInfo(id) {
+        //个人信息
         this.$api.user.userInfo(id).then((data) => {
           // console.log(data.data[0].user_id)
           var info = data.data[0]

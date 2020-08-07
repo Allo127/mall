@@ -43,8 +43,10 @@ export const SET_USER_BRITHDAY = "SET_USER_BIRTHDAY"
 export const SET_USER_INTRODUCE = "SET_USER_INTRODUCE"
 //退出登录
 export const LOGIN_OUT = "LOGIN_OUT"
+// =============订单列表=====================
+export const SET_USER_ORDER_LIST = "SET_USER_ORDER_LIST"
 export default {
-	SET_BANNER_IMAGES,
-	CATAGOTY_DATA,
-	ADDRESS_INFO
+  SET_BANNER_IMAGES,
+  CATAGOTY_DATA,
+  ADDRESS_INFO
 }
