@@ -125,7 +125,7 @@ const routes = [{
     name: "Order",
     component: Order,
     beforeEnter: (to, from, next) => {
-      const isLogin = localStorage.getItem("isLogin")
+      const isLogin = Boolean(localStorage.getItem('isLogin'))
       isLogin ? next() : next("/Login")
     }
   },
@@ -134,7 +134,7 @@ const routes = [{
     name: "Set",
     component: Set,
     beforeEnter: (to, from, next) => {
-      const isLogin = localStorage.getItem("isLogin")
+      const isLogin = Boolean(localStorage.getItem('isLogin'))
       isLogin ? next() : next("/Login")
     }
   },

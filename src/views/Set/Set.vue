@@ -23,6 +23,9 @@
   </div>
 </template>
 <script>
+  import {
+    mapMutations
+  } from 'vuex'
   export default {
     name: "Set",
     data() {
@@ -51,6 +54,7 @@
       }
     },
     methods: {
+      ...mapMutations(['LOGIN_OUT']),
       //顶部导航返回上一页
       onClickLeft() {
         this.$router.go(-1)
@@ -70,9 +74,9 @@
             // message: "弹窗内容"
           })
           .then(() => {
+            // 清理用户数据
+            this.LOGIN_OUT()
             this.$toast("退出成功")
-            localStorage.removeItem("isLogin")
-            this.$Cookies.remove('TOKEN')
             this.$router.push("/login")
           })
           .catch(() => {
