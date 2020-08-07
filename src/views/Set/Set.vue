@@ -34,7 +34,8 @@
 			return {
 				newschecked: true,
 				listData: [{
-						title: "个人资料"
+						title: "个人资料",
+            url: 'myInfo'
 					},
 					{
 						title: "收货地址",

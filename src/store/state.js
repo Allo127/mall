@@ -30,6 +30,7 @@ export default {
 	userSex: localStorage.getItem('userSex') || '', // 用户性别
 	userBirthday: localStorage.getItem('userBirthday') || '', //用户生日
 	userIntroduce: localStorage.getItem('userIntroduce') || '', //用户签名
+  userPwd: '',// 用户密码
   // 用户所有订单
   userOderList: JSON.parse(localStorage.getItem('userOderList')) || [],
   //订单界面状态

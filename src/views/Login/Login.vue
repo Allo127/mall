@@ -72,7 +72,7 @@
     },
     methods: {
       ...mapMutations(['SET_IS_LOGIN', 'SET_USER_ID', 'SET_USER_NAME', 'SET_USER_ACCOUNT', 'SET_USER_SEX',
-        'SET_USER_BRITHDAY','SET_USER_INTRODUCE'
+        'SET_USER_BRITHDAY','SET_USER_INTRODUCE','setuserPwd'
       ]),
       //提示用户选择登录方式
       TispLoginWay() {
@@ -123,6 +123,7 @@
           this.SET_USER_BRITHDAY(info.birth)
           this.SET_USER_SEX(info.sex)
           this.SET_USER_INTRODUCE(info.introduce)
+          this.setuserPwd(info.user_pwd)
         })
       },
       // 切换手机号登录
