@@ -28,20 +28,30 @@
 	export default {
 		data() {
 			return {
-				chosenAddressId: '1'
+				chosenAddressId: '1',
+				uid: 1
 			}
 		},
 		methods: {
 			...mapMutations(['ADDRESS_LIST']),
 			...mapMutations(['EDIT_ADDRESS_INFO']),
+			...mapMutations(['CHOOSE_ADDRESS']),
 			async getAddressList() {
-				this.$api.address.addressList().then(({
+				this.$api.address.addressList(this.uid).then(({
 					data
 				}) => {
 					console.log(data)
 					// this.images = data
 					// this.$store.commit('SET_BANNER_IMAGES')
 					this.ADDRESS_LIST(data)
+				})
+				this.$api.address.defaultAddress(this.uid).then(({
+					data
+				}) => {
+					console.log(data)
+					// this.images = data
+					// this.$store.commit('SET_BANNER_IMAGES')
+					this.CHOOSE_ADDRESS(data)
 				})
 			},
 			// 路由返回
@@ -74,13 +84,15 @@
 			},
 			// 选择地址
 			select(item) {
-				this.$store.dispatch("editAddressInfo", item)
+				console.log(item)
+				this.$store.dispatch("chooseAddress", item)
 				this.$router.push("/submitOrder")
 			}
 		},
 		computed: {
 			...mapState(["addressList"]),
-			...mapState(['editAddressInfo'])
+			...mapState(['editAddressInfo']),
+			...mapState(["chooseAddress"])
 		},
 		mounted() {
 			this.getAddressList()

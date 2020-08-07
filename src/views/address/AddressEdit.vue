@@ -32,12 +32,13 @@
 					data
 				}) => {
 					console.log(data)
+					this.$router.push("/Address")
 				})
 			},
 			// 删除地址
-			onDelete() {
+			onDelete(item) {
 				const editIndex = this.$route.params.editIndex
-				this.$api.address.delAddress(editIndex.id).then(({
+				this.$api.address.delAddress(item.address_id).then(({
 					data
 				}) => {
 					console.log(data)

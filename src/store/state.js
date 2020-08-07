@@ -1,6 +1,6 @@
 export default {
-  // 编辑收货人信息
-  editAddressInfo: {},
+	// 编辑收货人信息
+	editAddressInfo: {},
 	//分类数据
 	catagoryData: JSON.parse(localStorage.getItem('catagoryData')) || [],
 	//商品展示
@@ -18,6 +18,7 @@ export default {
 	order: [],
 	// 收货人地址列表
 	addressList: JSON.parse(localStorage.getItem('addressList')) || [],
-	// addressInfo: localStorage.setItem('addressInfo', JSON.stringify(addressInfo))
-  rootUrl: 'http://39.102.38.113:8088/'
+	// addressInfo: JSON.parse(localStorage.getItem('addressInfo')) || [],
+	chooseAddress: JSON.parse(localStorage.getItem('chooseAddress')) || [],
+	rootUrl: 'http://39.102.38.113:8088/'
 }

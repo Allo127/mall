@@ -4,6 +4,7 @@ import {
 	ADDRESS_INFO,
 	EDIT_ADDRESS_INFO,
 	DELELETE_ADDRESS,
+	CHOOSE_ADDRESS,
 	SAVE_CHANGE_DETAIL,
 	//分类数据
 	CATAGOTY_DATA,
@@ -74,6 +75,10 @@ export default {
 	// 删除联系人地址
 	[DELELETE_ADDRESS](state, editIndex) {
 		state.addressList.splice(editIndex, 1)
+	},
+	//选择地址
+	[CHOOSE_ADDRESS](state, data) {
+		state.chooseAdress = data
 	},
 	// 修改联系人地址
 	[SAVE_CHANGE_DETAIL](state, item) {

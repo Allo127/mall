@@ -105,6 +105,7 @@
 	.top {
 		height: 46px;
 		display: flex;
+		background-color: #FFFFFF;
 	}
 
 	.top .icon {

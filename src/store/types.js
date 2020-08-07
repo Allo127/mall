@@ -22,7 +22,11 @@ export const EDIT_ADDRESS_INFO = "EDIT_ADDRESS_INFO"
 export const DELELETE_ADDRESS = "DELELETE_ADDRESS"
 //修改联系人地址
 export const SAVE_CHANGE_DETAIL = "SAVE_CHANGE_DETAIL"
+//默认地址
+export const CHOOSE_ADDRESS = "CHOOSE_ADDRESS"
 //==============地址部分结束===============================
 export default {
-	SET_BANNER_IMAGES
+	SET_BANNER_IMAGES,
+	CATAGOTY_DATA,
+	ADDRESS_INFO
 }

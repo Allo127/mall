@@ -1,9 +1,7 @@
 <template>
 	<div class="container">
 		<!-- 顶部导航 -->
-		<Topbar hasBack>
-			<span slot="title">商品详情</span>
-		</Topbar>
+		<van-nav-bar title="商品详情" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<!-- 商品图片轮播 -->
 		<div class="goodSwipe">
 			<van-swipe :autoplay="3000" @change="onChange">
@@ -58,7 +56,6 @@
 </template>
 
 <script>
-	import Topbar from '../../components/Topbar.vue'
 	import GoodsSku from './base/GoodsSku.vue'
 	// import {
 	// 	GoodsMixin
@@ -67,7 +64,6 @@
 	export default {
 		// props: ['goodsId'],
 		components: {
-			Topbar,
 			GoodsSku
 		},
 		// mixins: [GoodsMixin],
@@ -103,6 +99,9 @@
 			addToCart() {
 				this.$refs.sku._data.showSku = true
 				this.$refs.sku._data.pid = this.pid
+			},
+			onClickLeft() {
+				this.$router.back()
 			},
 			// 添加到购物车
 			// async _addToCart() {

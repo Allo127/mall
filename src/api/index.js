@@ -4,11 +4,13 @@ import catagory from './requestAPI/catagory.js'
 import proList from './requestAPI/proList.js'
 import productInfo from './requestAPI/productInfo.js'
 import cart from './requestAPI/cart.js'
+import search from './requestAPI/search.js'
 export default {
 	homeData,
 	address,
 	catagory,
 	proList,
 	productInfo,
-	cart
+	cart,
+	search
 }

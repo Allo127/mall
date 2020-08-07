@@ -77,7 +77,10 @@
 	import BScroll from '../../components/BetterScroll.vue'
 	import Loading from '../../components/Loading.vue'
 	// import { GoodsMixin } from '@/mixins/goodsMixin'
-
+	import {
+		mapState,
+		mapMutations
+	} from "vuex"
 	export default {
 		components: {
 			menubar,
@@ -101,6 +104,7 @@
 			}
 		},
 		computed: {
+			...mapState(["order"]),
 			// 计算总价格
 			totalPrice() {
 				let totalPrice = 0
@@ -144,11 +148,13 @@
 			}
 		},
 		methods: {
+			...mapMutations(['SET_CONFIRM_ORDER_INFO']),
 			// 转到结算界面
 			goConfirmOrder() {
 				const goods = this.getCheckGood()
 				if (goods.length !== 0) {
-					this.SET_CONFIRM_ORDER_INFO(goods)
+					this.$store.dispatch("order", goods)
+					// this.SET_CONFIRM_ORDER_INFO(goods)
 					this.$router.push('submitOrder')
 				} else {
 					this.$toast('未选中商品')
@@ -277,6 +283,7 @@
 		li {
 			display: flex;
 			padding: 2px;
+			background-color: #FFFFFF;
 
 			.goodLeft {
 				margin: 0 5px;
