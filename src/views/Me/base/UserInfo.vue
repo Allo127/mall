@@ -6,8 +6,9 @@
           <img src="../../../assets/images/avatar.jpg" />
         </div>
         <div class="user-name">
-          <div class="name">你好,{{$Cookies.get("TOKEN")}}</div>
-          <div>享受生活,享受Happy Shopping!</div>
+          <div v-if="isLogin" class="name">你好,{{userName}}</div>
+          <div v-if="!isLogin" class="name" @click="goLogin">去登录</div>
+          <div v-if="isLogin">{{userIntroduce}}</div>
         </div>
       </van-col>
       <van-col class="qr-code">
@@ -28,7 +29,19 @@
 </template>
 
 <script>
-export default {}
+  import {
+    mapState
+  } from 'vuex'
+  export default {
+    computed: {
+      ...mapState(['userName','isLogin','userIntroduce'])
+    },
+    methods: {
+       goLogin() {
+          this.$router.push("/Login")
+       }
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

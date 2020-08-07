@@ -2,6 +2,7 @@ import axios from 'axios'
 // 封装axios
 // axios.defaults.baseURL = 'http://192.168.5.6:8088/'
 axios.defaults.baseURL = 'http://39.102.38.113:8088/'
+// axios.defaults.baseURL = 'http://39.102.38.113:3000/mock/11/'
 /*
  * 设置超时请求时间
  */

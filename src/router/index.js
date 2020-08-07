@@ -169,6 +169,7 @@ const routes = [{
 		name: "searchWin",
 		component: searchWin
 	}
+
 ]
 
 const router = new VueRouter({

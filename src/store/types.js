@@ -25,6 +25,24 @@ export const SAVE_CHANGE_DETAIL = "SAVE_CHANGE_DETAIL"
 //默认地址
 export const CHOOSE_ADDRESS = "CHOOSE_ADDRESS"
 //==============地址部分结束===============================
+// ============登录===========================
+// 设置登录状态
+export const SET_IS_LOGIN = "SET_IS_LOGIN"
+// =============用户部分========================
+// 设置用户id
+export const SET_USER_ID = "SET_USER_ID"
+// 设置用户名
+export const SET_USER_NAME = "SET_USER_NAME"
+// 设置用户账号
+export const SET_USER_ACCOUNT = "SET_USER_ACCOUNT"
+// 设置用户性别
+export const SET_USER_SEX = "SET_USER_SEX"
+// 设置用户生日
+export const SET_USER_BRITHDAY = "SET_USER_BIRTHDAY"
+//设置用户签名
+export const SET_USER_INTRODUCE = "SET_USER_INTRODUCE"
+//退出登录
+export const LOGIN_OUT = "LOGIN_OUT"
 export default {
 	SET_BANNER_IMAGES,
 	CATAGOTY_DATA,

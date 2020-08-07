@@ -22,19 +22,19 @@
     </div>
     <div class="login-tips">
       <span @click="onPhoneLogin">{{isPhoneLogin?'手机号登录':'用户名登录'}}</span>
-      <span  @click="goregister">去注册</span>
+      <span @click="goregister">去注册</span>
     </div>
     <!-- 第三方登录 -->
     <van-divider>第三方登录</van-divider>
     <div class="otherlogin">
       <div class="weibo" @click="onClick">
-        <img src="../../assets/icon/weibo.png"/>
+        <img src="../../assets/icon/weibo.png" />
       </div>
       <div class="weixin" @click="onClick">
-        <img src="../../assets/icon/微信公众号.png"/>
+        <img src="../../assets/icon/微信公众号.png" />
       </div>
       <div class="qq" @click="onClick">
-        <img src="../../assets/icon/QQ.png"/>
+        <img src="../../assets/icon/QQ.png" />
       </div>
     </div>
     <div class="protocol">
@@ -52,6 +52,9 @@
 </template>
 
 <script>
+  import {
+    mapMutations
+  } from 'vuex'
   export default {
     data() {
       return {
@@ -65,9 +68,12 @@
       }
     },
     created() {
-      this.TispLoginWay()
+      // this.TispLoginWay()
     },
     methods: {
+      ...mapMutations(['SET_IS_LOGIN', 'SET_USER_ID', 'SET_USER_NAME', 'SET_USER_ACCOUNT', 'SET_USER_SEX',
+        'SET_USER_BRITHDAY','SET_USER_INTRODUCE'
+      ]),
       //提示用户选择登录方式
       TispLoginWay() {
         this.$dialog
@@ -87,18 +93,37 @@
         this.isLoading = true
         setTimeout(() => {
           this.isLoading = false
-          if (this.userName && this.password) {
-            this.$Cookies.set("TOKEN", this.userName, {
-              expires: 7
-            })
-            localStorage.setItem("isLogin", true)
-            this.$router.push("/")
-            this.$notify({
-              type: "success",
-              message: "登录成功"
-            })
-          }
+          var isLogin = false
+          this.$api.login.loginAction(this.userName, this.password).then((
+            data
+          ) => {
+            // console.log(data)
+            if (data.message === '登陆成功') {
+              isLogin = true
+            }
+            if (isLogin) {
+              this.$router.push("/")
+              this.SET_IS_LOGIN(true) // 设置是否登录为true
+              this.SET_USER_ID(data.user_id) // 设置用户id
+              this.initUserInfo(data.user_id) //初始化用户信息
+              this.$toast("登录成功")
+            } else {
+              this.$toast("登录失败")
+            }
+          })
         }, 1000)
+      },
+      // 初始化用户数据
+      initUserInfo(id) {
+        this.$api.user.userInfo(id).then((data) => {
+          // console.log(data.data[0].user_id)
+          var info = data.data[0]
+          this.SET_USER_ACCOUNT(info.login_name)
+          this.SET_USER_NAME(info.nick_name)
+          this.SET_USER_BRITHDAY(info.birth)
+          this.SET_USER_SEX(info.sex)
+          this.SET_USER_INTRODUCE(info.introduce)
+        })
       },
       // 切换手机号登录
       onPhoneLogin() {
@@ -150,6 +175,7 @@
     left: 0;
     padding: 0 10%;
     background: linear-gradient(to bottom, #f06c7a 0%, #f06c7a 100%);
+
     .cross-login {
       position: absolute;
       top: 30px;
@@ -243,7 +269,8 @@
       .qq {
         background-color: #2baefc;
       }
-      img{
+
+      img {
         width: 20px;
       }
     }

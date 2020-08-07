@@ -5,6 +5,10 @@ import proList from './requestAPI/proList.js'
 import productInfo from './requestAPI/productInfo.js'
 import cart from './requestAPI/cart.js'
 import search from './requestAPI/search.js'
+import order from './requestAPI/order.js'
+import login from './requestAPI/login.js'
+import register from './requestAPI/register.js'
+import user from './requestAPI/user.js'
 export default {
 	homeData,
 	address,
@@ -12,5 +16,9 @@ export default {
 	proList,
 	productInfo,
 	cart,
-	search
+	search,
+	order,
+	login,
+	register,
+	user
 }

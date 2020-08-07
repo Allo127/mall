@@ -20,5 +20,15 @@ export default {
 	addressList: JSON.parse(localStorage.getItem('addressList')) || [],
 	// addressInfo: JSON.parse(localStorage.getItem('addressInfo')) || [],
 	chooseAddress: JSON.parse(localStorage.getItem('chooseAddress')) || [],
-	rootUrl: 'http://39.102.38.113:8088/'
+	rootUrl: 'http://39.102.38.113:8088/',
+	// 登录状态
+	isLogin: Boolean(localStorage.getItem('isLogin')) || false,
+	// 用户相关信息
+	userId: localStorage.getItem('userId') || '', // 用户id
+	userName: localStorage.getItem('userName') || '', // 用户名
+	userAccount: localStorage.getItem('userAccount') || '', // 用户账号
+	userSex: localStorage.getItem('userSex') || '', // 用户性别
+	userBirthday: localStorage.getItem('userBirthday') || '', //用户生日
+	userIntroduce: localStorage.getItem('userIntroduce') || '' //用户签名
+
 }
