@@ -36,6 +36,6 @@ export default {
   orderViewKey: 0,
   //订单界面当前的订单
   userOderListNow: [],
-  // 提交订单界面
+  // 提交订单界面总价
   totalPrice: 0
 }

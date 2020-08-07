@@ -9,7 +9,7 @@
 		<div class="list">
 			<van-cell size="large" is-link v-for="(item,index) in listData" :key="index">
 				<div slot="title">
-					<router-link :to="{ name: item.url}">{{item.title}}</router-link>
+					<router-link class='title' :to="{ name: item.url}">{{item.title}}</router-link>
 				</div>
 				<div slot="default">{{item.value}}</div>
 			</van-cell>
@@ -107,7 +107,9 @@
 		right: 0;
 		left: 0;
 		background-color: #fff;
-
+    .title{
+      color: #666;
+    }
 		.quit-login {
 			padding: 20px;
 		}
