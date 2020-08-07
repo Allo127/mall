@@ -42,7 +42,7 @@
 			}
 		},
 		mounted() {
-			// this.Searchvalue = this.$route.params.Searchvalue
+			this.Searchvalue = this.$route.params.Searchvalue
 			console.log(this.Searchvalue)
 			this.getList()
 		}

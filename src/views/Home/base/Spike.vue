@@ -3,7 +3,7 @@
     <!-- 秒杀倒计时 -->
     <van-row type="flex" justify="space-between">
       <van-col class="title">
-       <van-icon name="clock" color="#ff5500" />
+        <van-icon name="clock" color="#ff5500" />
         <span>限时秒杀</span>
         <van-count-down :time="time">
           <template v-slot="timeData">
@@ -13,34 +13,51 @@
           </template>
         </van-count-down>
       </van-col>
-      <van-col class="more">
+      <van-col class="more" @click="()=>{this.$router.push('/spike')}">
         <span>查看更多</span>
         <van-icon name="arrow" />
       </van-col>
     </van-row>
     <!-- 秒杀商品 -->
     <van-row class="spike-goods" type="flex" justify="space-between">
-      <van-col class="spike-goods-item" @click="goDetail" v-for="(item,index) in 10" :key="index">
-        <van-image width="3rem" fit="contain" lazy-load radius="5px" src="//t00img.yangkeduo.com/goods/images/2019-11-26/6cc0cb7c2244771122a3c75fd212a163.jpeg" />
-        <div class="van-multi-ellipsis--l2">【加绒加厚】假两件连帽卫衣女秋冬2019年新款韩版百搭学生上衣潮</div>
+      <van-col class="spike-goods-item" @click="goDetail(item.goods_id)" v-for="(item,index) in goods" :key="index">
+        <van-image width="3rem" fit="contain" lazy-load radius="5px" :src="rootUrl + item.goods_carousel" />
+        <div class="van-multi-ellipsis--l2">{{item.goods_name}}</div>
         <div class="price">
-          <span>￥176</span>
-          <s>￥399</s>
+          <span>￥{{item.selling_price}}</span>
+          <s>￥{{item.original_price}}</s>
         </div>
       </van-col>
     </van-row>
   </div>
 </template>
 <script>
+  import {
+    mapState
+  } from 'vuex'
   export default {
+    props: {
+      // 接受父组件传过来的数据
+      goods: Array
+    },
+    mounted() {
+    },
     data() {
       return {
         time: 30 * 60 * 60 * 1000
       }
     },
+    computed: {
+      ...mapState(['rootUrl'])
+    },
     methods: {
-      goDetail() {
-        // this.$router.push('/detail?goods_id=52157500821')
+      goDetail(id) {
+        this.$router.push({
+          name: 'proD',
+          params: {
+            pid: id
+          }
+        })
       }
     }
   }

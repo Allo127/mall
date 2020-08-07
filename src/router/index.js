@@ -26,6 +26,7 @@ import orderPay from '../views/Order/base/OrderPay.vue' // 支付订单
 import paySuccess from '../views/Order/base/PaySuccess.vue' // 支付成功
 import Login from '../views/Login/Login.vue' // 登录
 import Register from '../views/Login/Register.vue' // 注册
+import Spike from '../views/Spike/Spike.vue'//秒杀详情界面
 Vue.use(VueRouter)
 const routes = [{
 		path: '/',
@@ -165,10 +166,15 @@ const routes = [{
 		component: Register
 	},
 	{
-		path: "/searchWin",
+		path: "/searchWin/:Searchvalue",
 		name: "searchWin",
 		component: searchWin
-	}
+	},
+  {
+  	path: "/spike",
+  	name: "Spike",
+  	component: Spike
+  }
 
 ]
 
