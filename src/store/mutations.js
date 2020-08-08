@@ -135,6 +135,10 @@ export default {
     state.userIntroduce = val
     localStorage.setItem('userIntroduce', val)
   },
+  //设置用户密码
+  setuserPwd(state,val) {
+    state.userPwd = val
+  },
   // 退出登录
   [LOGIN_OUT](state) {
     // 登录状态

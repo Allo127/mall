@@ -30,12 +30,13 @@ export default {
 	userSex: localStorage.getItem('userSex') || '', // 用户性别
 	userBirthday: localStorage.getItem('userBirthday') || '', //用户生日
 	userIntroduce: localStorage.getItem('userIntroduce') || '', //用户签名
+  userPwd: '',// 用户密码
   // 用户所有订单
   userOderList: JSON.parse(localStorage.getItem('userOderList')) || [],
   //订单界面状态
   orderViewKey: 0,
   //订单界面当前的订单
   userOderListNow: [],
-  // 提交订单界面
+  // 提交订单界面总价
   totalPrice: 0
 }

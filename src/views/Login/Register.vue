@@ -56,7 +56,7 @@
     methods: {
       //设置登录、用户数据函数
       ...mapMutations(['SET_IS_LOGIN', 'SET_USER_ID', 'SET_USER_NAME', 'SET_USER_ACCOUNT', 'SET_USER_SEX',
-        'SET_USER_BRITHDAY'
+        'SET_USER_BRITHDAY','setuserPwd'
       ]),
       //提示用户选择注册方式
       TispRegisterWay() {
@@ -102,6 +102,7 @@
           var info = data.data[0]
           this.SET_USER_ACCOUNT(info.login_name)
           this.SET_USER_NAME(info.nick_name)
+          this.setuserPwd(info.user_pwd)
         })
       },
       // 切换手机号注册

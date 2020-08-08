@@ -66,7 +66,7 @@ export default {
         this.$router.go(-1)
       },
       onSearch() {
-        console.log("我已经执行了")
+        this.$router.push("/searchWin/" + this.keywords)
       },
       // 清除历史搜索
       clear() {
