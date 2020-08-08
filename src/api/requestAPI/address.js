@@ -20,10 +20,10 @@ const address = {
 		})
 		return axios.post('/address/delAddress/', data)
 	},
-	// //更改默认地址
-	// changeBase(id) {
-	// 	return axios.post('/address/defAddress?id=' + id)
-	// },
+	//更改默认地址
+	changeBase(id) {
+		return axios.post('/address/defAddress?id=' + id)
+	},
 	//添加地址
 	addAddress(item) {
 		return axios.post('/address/addAddress/', item)

@@ -9,13 +9,12 @@ const cart = {
 		return await axios
 			.post('/cart/goodscartbyid/', data)
 	},
-	//添加编辑购物车
+	//添加&编辑购物车
 	addCart(uid, pid, num) {
 		var data = JSON.stringify({
 			user_id: uid,
 			goods_id: pid,
 			goods_count: num
-
 		})
 		return axios.post('/cart/addcart/', data)
 	},

@@ -49,7 +49,7 @@
 				<van-goods-action-icon icon="wap-home-o" to="/" text="首页" />
 				<van-goods-action-icon icon="cart-o" to="/cartTest" text="购物车" />
 				<van-goods-action-button type="warning" text="加入购物车" @click="addToCart" />
-				<van-goods-action-button type="danger" text="立即购买" />
+				<van-goods-action-button type="danger" text="立即购买" @click="addToCart" />
 			</van-goods-action>
 		</div>
 	</div>
@@ -72,6 +72,7 @@
 				current: 0,
 				active: 0,
 				goodsInfo: {},
+				goodInfo: [],
 				commentList: [], // 没有接口 暂时先不写了
 				collectionFlag: false,
 				browseFlag: false,
@@ -89,6 +90,7 @@
 				}) => {
 					console.log(data)
 					this.goodsInfo = data[0]
+					this.goodInfo = data
 					// this.banner = data[0].goods_carousel //banner 轮播图
 					// this.detailImg = data[0].detail //详情内容图片
 					// this.goodsDesc = data[0].goods_name // 商品的标题
@@ -99,6 +101,7 @@
 			addToCart() {
 				this.$refs.sku._data.showSku = true
 				this.$refs.sku._data.pid = this.pid
+				this.$refs.sku._data.goodsInfo = this.goodInfo
 			},
 			onClickLeft() {
 				this.$router.back()

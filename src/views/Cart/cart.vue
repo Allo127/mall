@@ -114,7 +114,7 @@
 						totalPrice += item.goods_info[0].selling_price * 100 * item.goods_count
 					}
 				})
-        this.changeTotalPrice(totalPrice / 100)
+				this.changeTotalPrice(totalPrice / 100)
 				return totalPrice
 			},
 			// 计算选中商品数，判断是否已经全选
@@ -149,7 +149,7 @@
 			}
 		},
 		methods: {
-			...mapMutations(['SET_CONFIRM_ORDER_INFO','changeTotalPrice']),
+			...mapMutations(['SET_CONFIRM_ORDER_INFO', 'changeTotalPrice']),
 			// 转到结算界面
 			goConfirmOrder() {
 				const goods = this.getCheckGood()
@@ -167,22 +167,11 @@
 			},
 			// 全选与取消逻辑，通过遍历数组实现
 			checkAll() {
-				// this.shopCartList.forEach(item => {
-				// 	item.checked = this.checked
-				// 	console.log(item.checked)
-				// })
 				this.shopCartList.forEach(item => {
 					// console.log()
 					item.checked = this.checkedAll
 					console.log(item.checked)
 				})
-				// const cache = !this.checkedAll
-				// console.log(this.checkedAll)
-				// // console.log(cache)
-				// this.shopCartList.forEach(item => {
-				// 	item.checked = cache
-				// 	console.log(item.checked)
-				// })
 			},
 			// 获取购物车信息
 			async _getCartInfo() {

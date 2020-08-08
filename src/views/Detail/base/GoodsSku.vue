@@ -9,6 +9,9 @@
 </template>
 
 <script>
+	import {
+		mapState
+	} from "vuex"
 	export default {
 		data() {
 			return {
@@ -19,6 +22,7 @@
 				uid: 1,
 				pid: 10005,
 				num: 1,
+				goodsInfo: [],
 				sku: {
 					//规格数据
 					hide_stock: false, //是否显示商品库存
@@ -122,13 +126,15 @@
 			}
 		},
 		methods: {
+			...mapState(["order"]),
 			// 立即购买
-			onBuyClicked() {
+			onBuyClicked(item) {
 				this.$toast.loading({
 					message: "加载中...",
 					forbidClick: true
 				})
 				setTimeout(() => {
+					this.$store.dispatch("order", this.goodsInfo)
 					this.$toast.clear()
 					this.$router.push("/submitOrder")
 				}, 1000)
